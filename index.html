@@ -88,53 +88,232 @@
     </div>
 
     <main class="main">
-      <!-- Hero Section -->
+      <!-- Hero Section (Centered SaaS) -->
       <section class="hero section" id="home">
         <div class="container hero__container">
-          <div class="hero__content">
+          <div class="hero__content-wrapper">
             <div class="hero__badge">Conversion Focused Design</div>
             <h1 class="hero__title">
-              <span class="hero__title-line">Convert Users</span>
-              <span class="hero__title-line"
-                >To <span class="text-gradient">Paying Clients</span></span
-              >
+              Turn Traffic Into <br />
+              <span class="text-gradient">Revenue</span>.
             </h1>
             <p class="hero__description">
-              We engineer high-performance websites and digital experiences that
-              turn passive visitors into qualified leads.
+              We build premium, high-converting websites for ambition-led
+              brands. Modern aesthetics meet serious performance.
             </p>
             <div class="hero__btns">
-              <a href="#contact" class="btn btn--primary">Enquiry Now</a>
-              <a href="#work" class="btn btn--secondary">View Our Work</a>
+              <a href="#contact" class="btn btn--primary">
+                Book a Strategy Call
+                <i data-lucide="arrow-right" class="btn__icon"></i>
+              </a>
+              <a href="#work" class="btn btn--secondary">View Selected Work</a>
+            </div>
+
+            <!-- Floating Elements (Orbiting) -->
+            <div class="hero__orbit-elements">
+              <div class="float-card float-card--orbit-1">
+                <div class="float-icon"><i data-lucide="trending-up"></i></div>
+                <div class="float-content">
+                  <span class="float-label">Growth</span>
+                  <span class="float-value">+240%</span>
+                </div>
+              </div>
+              <div class="float-card float-card--orbit-2">
+                <div class="float-icon"><i data-lucide="users"></i></div>
+                <div class="float-content">
+                  <span class="float-label">Leads</span>
+                  <span class="float-value">850+</span>
+                </div>
+              </div>
+              <div class="float-card float-card--orbit-3">
+                <div class="float-icon"><i data-lucide="zap"></i></div>
+                <div class="float-content">
+                  <span class="float-label">Speed</span>
+                  <span class="float-value">0.2s</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="hero__scroll-indicator">
-          <span>Scroll</span>
-          <i data-lucide="arrow-down"></i>
+      </section>
+
+      <!-- Social Proof -->
+      <section class="social-proof">
+        <div class="container">
+          <p class="social-proof__label">Trusted by high-growth companies</p>
+          <div class="logos__track">
+            <div class="logo-item">VERTEX</div>
+            <div class="logo-item">LAYER</div>
+            <div class="logo-item">QUOTIENT</div>
+            <div class="logo-item">SISYPHUS</div>
+            <div class="logo-item">HOURGLASS</div>
+            <div class="logo-item">CIRCOOL</div>
+          </div>
         </div>
       </section>
 
-      <!-- Problem/Solution Section -->
-      <section class="problem section">
-        <div class="container problem__container">
-          <div class="problem__text">
+      <!-- Value/Stats Section -->
+      <section class="value section">
+        <div class="container">
+          <div class="section__header text-center">
             <h2 class="section__title">
-              Most websites are <span class="text-highlight">broken</span>.
+              Designed for <span class="text-gradient">Impact</span>
             </h2>
             <p class="section__subtitle">
-              Slow load times, confusing layouts, and generic templates are
-              killing your conversions.
+              We don't just design pages. We engineer digital ecosystems that
+              build trust and drive revenue.
             </p>
           </div>
-          <div class="solution__text">
-            <h2 class="section__title">
-              We build <span class="text-highlight">performance systems</span>.
-            </h2>
-            <p class="section__subtitle">
-              Fast, strategic, and designed to sell. Scalable code that grows
-              with your business.
-            </p>
+
+          <div class="problem__container">
+            <!-- Reusing grid layout -->
+            <div class="problem__text">
+              <h3 class="section__title" style="font-size: 2rem">
+                Strategic Precision.
+              </h3>
+              <p
+                class="section__subtitle"
+                style="margin: 0; margin-bottom: 2rem"
+              >
+                Every pixel serves a purpose. We combine aesthetic excellence
+                with data-driven user experience strategies.
+              </p>
+              <ul
+                class="value__list"
+                style="color: var(--text-secondary); line-height: 2"
+              >
+                <li>
+                  <i
+                    data-lucide="check-circle"
+                    style="
+                      display: inline;
+                      width: 1.2em;
+                      color: var(--accent-color);
+                      margin-right: 0.5rem;
+                      vertical-align: middle;
+                    "
+                  ></i>
+                  Conversion-rate optimization
+                </li>
+                <li>
+                  <i
+                    data-lucide="check-circle"
+                    style="
+                      display: inline;
+                      width: 1.2em;
+                      color: var(--accent-color);
+                      margin-right: 0.5rem;
+                      vertical-align: middle;
+                    "
+                  ></i>
+                  Scalable design systems
+                </li>
+                <li>
+                  <i
+                    data-lucide="check-circle"
+                    style="
+                      display: inline;
+                      width: 1.2em;
+                      color: var(--accent-color);
+                      margin-right: 0.5rem;
+                      vertical-align: middle;
+                    "
+                  ></i>
+                  Brand positioning alignment
+                </li>
+              </ul>
+            </div>
+
+            <div class="solution__text">
+              <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem"
+              >
+                <div>
+                  <div
+                    style="
+                      font-size: 3.5rem;
+                      font-weight: 800;
+                      color: var(--accent-color);
+                      line-height: 1;
+                    "
+                  >
+                    3x
+                  </div>
+                  <p
+                    style="
+                      font-size: 0.875rem;
+                      color: var(--text-secondary);
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Average conversion lift
+                  </p>
+                </div>
+                <div>
+                  <div
+                    style="
+                      font-size: 3.5rem;
+                      font-weight: 800;
+                      color: var(--accent-color);
+                      line-height: 1;
+                    "
+                  >
+                    0.2s
+                  </div>
+                  <p
+                    style="
+                      font-size: 0.875rem;
+                      color: var(--text-secondary);
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Page load speeds
+                  </p>
+                </div>
+                <div>
+                  <div
+                    style="
+                      font-size: 3.5rem;
+                      font-weight: 800;
+                      color: var(--accent-color);
+                      line-height: 1;
+                    "
+                  >
+                    50+
+                  </div>
+                  <p
+                    style="
+                      font-size: 0.875rem;
+                      color: var(--text-secondary);
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    SaaS launches
+                  </p>
+                </div>
+                <div>
+                  <div
+                    style="
+                      font-size: 3.5rem;
+                      font-weight: 800;
+                      color: var(--accent-color);
+                      line-height: 1;
+                    "
+                  >
+                    24/7
+                  </div>
+                  <p
+                    style="
+                      font-size: 0.875rem;
+                      color: var(--text-secondary);
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Support & Monitoring
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -316,6 +495,103 @@
                 <span class="testimonial__role">Director, Studio X</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Insights Section -->
+      <section class="insights section" id="insights">
+        <div class="container">
+          <div class="section__header text-center">
+            <h2 class="section__title">
+              Expert <span class="text-gradient">Insights</span>
+            </h2>
+            <p class="section__subtitle">
+              Strategies for growth-focused digital leaders.
+            </p>
+          </div>
+
+          <div class="insights__grid">
+            <article class="insight__card">
+              <div
+                class="insight__image"
+                style="
+                  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+                "
+              ></div>
+              <div class="insight__content">
+                <div class="insight__meta">
+                  <span class="insight__tag">Strategy</span>
+                  <span class="insight__date">Oct 12, 2024</span>
+                </div>
+                <h3 class="insight__title">The Psychology of Pricing Pages</h3>
+                <p class="insight__excerpt">
+                  How to structure your pricing tiers to maximize maximize
+                  revenue per user.
+                </p>
+                <a href="#" class="insight__link"
+                  >Read Article
+                  <i
+                    data-lucide="arrow-right"
+                    style="width: 1em; vertical-align: middle"
+                  ></i
+                ></a>
+              </div>
+            </article>
+
+            <article class="insight__card">
+              <div
+                class="insight__image"
+                style="
+                  background: linear-gradient(135deg, #f3e8ff 0%, #d8b4fe 100%);
+                "
+              ></div>
+              <div class="insight__content">
+                <div class="insight__meta">
+                  <span class="insight__tag">Design</span>
+                  <span class="insight__date">Sep 28, 2024</span>
+                </div>
+                <h3 class="insight__title">Why "Above the Fold" is Dead</h3>
+                <p class="insight__excerpt">
+                  Modern scrolling behavior has changed. Here's how to design
+                  for the scroll.
+                </p>
+                <a href="#" class="insight__link"
+                  >Read Article
+                  <i
+                    data-lucide="arrow-right"
+                    style="width: 1em; vertical-align: middle"
+                  ></i
+                ></a>
+              </div>
+            </article>
+
+            <article class="insight__card">
+              <div
+                class="insight__image"
+                style="
+                  background: linear-gradient(135deg, #fae8ff 0%, #f0abfc 100%);
+                "
+              ></div>
+              <div class="insight__content">
+                <div class="insight__meta">
+                  <span class="insight__tag">Conversion</span>
+                  <span class="insight__date">Sep 15, 2024</span>
+                </div>
+                <h3 class="insight__title">Reducing Friction in Forms</h3>
+                <p class="insight__excerpt">
+                  Simple UI patterns that increased form completion rates by
+                  45%.
+                </p>
+                <a href="#" class="insight__link"
+                  >Read Article
+                  <i
+                    data-lucide="arrow-right"
+                    style="width: 1em; vertical-align: middle"
+                  ></i
+                ></a>
+              </div>
+            </article>
           </div>
         </div>
       </section>

@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Elements to animate
   const animatedElements = document.querySelectorAll(
-    ".section__title, .section__subtitle, .service__card, .process__step, .work__card, .testimonial__card, .hero__content > *, .contact__wrapper",
+    ".section__title, .section__subtitle, .service__card, .process__step, .work__card, .testimonial__card, .insight__card, .hero__content > *, .contact__wrapper",
   );
 
   animatedElements.forEach((el, index) => {
