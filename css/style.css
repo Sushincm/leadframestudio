@@ -188,7 +188,9 @@ img {
 .btn:hover .btn__icon {
   transform: translateX(4px);
 }
-
+.header-cta-btn:hover {
+  color: var(--accent-color);
+}
 /* Section Base */
 .section {
   padding: var(--space-3xl) 0;
@@ -317,7 +319,7 @@ img {
   width: 0;
   height: 2px;
   background: var(--accent-gradient);
-  transition: width 0.3s var(--ease-out-expo);
+  transition: width 0.3s ease;
 }
 .nav__link:hover::after {
   width: 100%;
