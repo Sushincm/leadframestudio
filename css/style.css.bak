@@ -628,182 +628,51 @@ img {
   margin-bottom: 1.5rem;
 }
 
-/* Google Reviews Carousel */
-.testimonials-slider {
-  width: 100%;
-  overflow: hidden;
-  padding: 2rem 0;
-  position: relative;
-  /* Add fade masks on sides */
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-  margin-top: 3rem;
-}
-
-.testimonials-track {
-  display: flex;
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  width: max-content;
-  animation: scroll 40s linear infinite;
-  /* Ensure smooth movement */
-  will-change: transform;
+  margin-top: 4rem;
 }
-
-.testimonials-track:hover {
-  animation-play-state: paused;
+.testimonial__card {
+  padding: 2.5rem;
+  position: relative;
 }
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* We will duplicate the items, so move by half the total width if using duplicates 
-       BUT here we will just create a long list and maybe use percentage if we know the width
-       or use JS to reset. The simplest CSS-only infinite scroll with seamless looping
-       requires duplicates that exactly match the viewport width. 
-       Let's assume we have two sets of items and transform -50% works if the sets are identical. */
-    transform: translateX(-50%);
-  }
-}
-
-.google-review-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 20px;
-  padding: 2rem;
-  min-width: 350px;
-  max-width: 350px;
-  box-shadow: var(--shadow-subtle);
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  /* Make sure they don't shrink */
-  flex-shrink: 0;
-}
-
-.google-review-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-medium);
-  border-color: var(--accent-color);
-}
-
-.review-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.reviewer-info {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.reviewer-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.25rem;
-}
-
-.reviewer-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.reviewer-name {
-  font-weight: 700;
-  color: var(--text-primary);
-  font-size: 1rem;
-}
-
-.review-meta {
-  font-size: 0.8rem;
-  color: var(--text-tertiary);
-}
-
-.google-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.review-stars {
-  display: flex;
-  gap: 2px;
-  color: #fbbf24; /* Amber 400 */
-}
-
-.review-stars svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-}
-
-.review-text {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.google-rating-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 100px;
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+.testimonial__text {
+  font-size: 1.1rem;
+  color: var(--text-color);
   margin-bottom: 2rem;
-  border: 1px solid var(--border-light);
-  /* Center it */
-  margin-left: auto;
-  margin-right: auto;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
 }
-
-.rating-score {
-  font-weight: 800;
-  font-size: 1.25rem;
+.testimonial__text::before {
+  content: '"';
+  position: absolute;
+  top: -2rem;
+  left: -1rem;
+  font-size: 5rem;
+  color: var(--accent-color);
+  opacity: 0.3;
+  font-family: serif;
+  line-height: 1;
+  z-index: -1;
+}
+.testimonial__author {
+  border-top: 1px solid var(--border-light);
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.testimonial__name {
+  display: block;
+  font-weight: 700;
   color: var(--text-primary);
 }
-
-.rating-stars {
-  display: flex;
-  gap: 2px;
-  color: #fbbf24;
-}
-
-.rating-source {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+.testimonial__role {
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
 /* NEW CONTACT SECTION STYLES */
@@ -1280,6 +1149,7 @@ img {
   }
 }
 @media (max-width: 550px) {
+
   .problem__text {
     padding: 0.5em;
   }
