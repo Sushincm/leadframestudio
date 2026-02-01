@@ -73,7 +73,9 @@
           </div>
         </nav>
         <div class="nav__btns">
-          <a href="#contact" class="btn btn--small header-cta-btn">Schedule Your Time</a>
+          <a href="#contact" class="btn btn--small header-cta-btn"
+            >Schedule Your Time</a
+          >
           <div class="nav__toggle" id="nav-toggle">
             <i data-lucide="menu"></i>
           </div>
@@ -90,12 +92,17 @@
     <main class="main">
       <!-- Hero Section (Centered SaaS) -->
       <section class="hero section" id="home">
+        <div
+          class="hero__unicorn-bg"
+          data-us-project="EmZZ8rcrRLQ6UBhMz64O"
+          style="width: 100%; height: 100%; position: absolute; top: 0; left: 0"
+        ></div>
         <div class="container hero__container">
           <div class="hero__content-wrapper">
             <div class="hero__badge">Conversion Focused Design</div>
             <h1 class="hero__title">
               Turn Traffic Into <br />
-              <span class="text-gradient">Revenue</span>.
+              <span class="">Revenue</span>
             </h1>
             <p class="hero__description">
               We build premium, high-converting websites for ambition-led
@@ -107,31 +114,6 @@
                 <i data-lucide="arrow-right" class="btn__icon"></i>
               </a>
               <a href="#work" class="btn btn--secondary">View Selected Work</a>
-            </div>
-
-            <!-- Floating Elements (Orbiting) -->
-            <div class="hero__orbit-elements">
-              <div class="float-card float-card--orbit-1">
-                <div class="float-icon"><i data-lucide="trending-up"></i></div>
-                <div class="float-content">
-                  <span class="float-label">Growth</span>
-                  <span class="float-value">+240%</span>
-                </div>
-              </div>
-              <div class="float-card float-card--orbit-2">
-                <div class="float-icon"><i data-lucide="users"></i></div>
-                <div class="float-content">
-                  <span class="float-label">Leads</span>
-                  <span class="float-value">850+</span>
-                </div>
-              </div>
-              <div class="float-card float-card--orbit-3">
-                <div class="float-icon"><i data-lucide="zap"></i></div>
-                <div class="float-content">
-                  <span class="float-label">Speed</span>
-                  <span class="float-value">0.2s</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -957,6 +939,37 @@
     <script src="js/script.js"></script>
     <script>
       lucide.createIcons();
+    </script>
+
+    <!-- Unicorn Studio Script -->
+    <script type="text/javascript">
+      !(function () {
+        var u = window.UnicornStudio;
+        if (u && u.init) {
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", function () {
+              u.init();
+            });
+          } else {
+            u.init();
+          }
+        } else {
+          window.UnicornStudio = { isInitialized: !1 };
+          var i = document.createElement("script");
+          ((i.src =
+            "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.0.4/dist/unicornStudio.umd.js"),
+            (i.onload = function () {
+              if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", function () {
+                  UnicornStudio.init();
+                });
+              } else {
+                UnicornStudio.init();
+              }
+            }),
+            (document.head || document.body).appendChild(i));
+        }
+      })();
     </script>
   </body>
 </html>
