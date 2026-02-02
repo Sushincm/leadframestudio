@@ -47,9 +47,6 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-    <!-- Lenis for Smooth Scroll -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
     <!-- Three.js (for Hero Animation) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   </head>
@@ -205,7 +202,7 @@
       </section>
 
       <!-- Services Section (Hybrid Layout) -->
-      <section class="levels-sec section" id="services" style="padding: 0">
+      <section class="levels-sec section" id="services">
         <h2 class="section__title text-center mb-5">Our Expertise</h2>
 
         <!-- DESKTOP LAYOUT (Levels) - Visible > 992px -->
@@ -1080,36 +1077,6 @@
       lucide.createIcons();
     </script>
 
-    <!-- Unicorn Studio Script -->
-    <script type="text/javascript">
-      !(function () {
-        var u = window.UnicornStudio;
-        if (u && u.init) {
-          if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", function () {
-              u.init();
-            });
-          } else {
-            u.init();
-          }
-        } else {
-          window.UnicornStudio = { isInitialized: !1 };
-          var i = document.createElement("script");
-          ((i.src =
-            "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.0.4/dist/unicornStudio.umd.js"),
-            (i.onload = function () {
-              if (document.readyState === "loading") {
-                document.addEventListener("DOMContentLoaded", function () {
-                  UnicornStudio.init();
-                });
-              } else {
-                UnicornStudio.init();
-              }
-            }),
-            (document.head || document.body).appendChild(i));
-        }
-      })();
-    </script>
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/script.js"></script>

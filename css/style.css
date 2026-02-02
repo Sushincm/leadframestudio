@@ -1432,10 +1432,6 @@ img {
     gap: 0;
   }
 
-  /* Unicorn Studio Background - Mobile Optimization */
-  .hero__unicorn-bg {
-    opacity: 0.25; /* Reduce opacity on mobile for better readability */
-  }
 }
 
 @media (max-width: 992px) {
