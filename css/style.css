@@ -1420,8 +1420,9 @@ img {
     padding: 2em 1em;
   }
   .contact__form-wrapper {
-    padding: 0;
     border: none;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .contact__item {
     flex-direction: column;
