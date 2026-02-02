@@ -44,6 +44,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Three.js (for Hero Animation) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -92,11 +95,7 @@
     <main class="main">
       <!-- Hero Section (Centered SaaS) -->
       <section class="hero section" id="home">
-        <div
-          class="hero__unicorn-bg"
-          data-us-project="EmZZ8rcrRLQ6UBhMz64O"
-          style="width: 100%; height: 100%; position: absolute; top: 0; left: 0"
-        ></div>
+        <div id="hero-canvas-container"></div>
         <div class="container hero__container">
           <div class="hero__content-wrapper">
             <div class="hero__badge">Conversion Focused Design</div>
@@ -971,5 +970,7 @@
         }
       })();
     </script>
+    <script src="js/script.js"></script>
+    <script src="js/bg-animation.js"></script>
   </body>
 </html>

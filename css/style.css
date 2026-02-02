@@ -188,9 +188,29 @@ img {
 .btn:hover .btn__icon {
   transform: translateX(4px);
 }
-.header-cta-btn:hover {
-  color: var(--accent-color);
+.header-cta-btn {
+  background: rgba(255, 255, 255, 0.15); /* Glassy White by default */
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
 }
+.header-cta-btn:hover {
+  background: #fff;
+  color: var(--accent-color);
+  border-color: #fff;
+}
+
+.header.scrolled .header-cta-btn {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px -3px rgba(124, 58, 237, 0.5);
+}
+.header.scrolled .header-cta-btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
 /* Section Base */
 .section {
   padding: var(--space-3xl) 0;
@@ -281,6 +301,7 @@ img {
   border-bottom: 1px solid transparent;
   padding: 1.2rem 0;
   transition: all 0.4s ease;
+  color: #fff; /* Default text color (on Hero) */
 }
 .header.scrolled {
   background-color: rgba(255, 255, 255, 0.9); /* White Glass */
@@ -288,6 +309,7 @@ img {
   border-bottom: 1px solid var(--border-light);
   padding: 0.8rem 0;
   box-shadow: var(--shadow-subtle);
+  color: var(--text-primary); /* Dark text on scroll */
 }
 .header .container {
   display: flex;
@@ -295,9 +317,11 @@ img {
   align-items: center;
 }
 .logo {
-  font-size: 1.75rem;
-  font-weight: 800;
+  font-size: 1.3rem;
+  font-weight: 400;
   letter-spacing: -1px;
+  color: inherit; /* Inherit from header */
+  text-decoration: none;
 }
 
 .nav__list {
@@ -307,7 +331,7 @@ img {
 .nav__link {
   font-weight: 500;
   font-size: 0.95rem;
-  color: var(--text-primary);
+  color: inherit; /* Inherit from header */
   transition: color 0.3s ease;
   position: relative;
 }
@@ -323,6 +347,16 @@ img {
 }
 .nav__link:hover::after {
   width: 100%;
+}
+/* Scrolled state overrides */
+.header.scrolled .nav__link {
+  color: var(--text-primary);
+}
+.header.scrolled .logo {
+  color: var(--text-primary);
+}
+.header.scrolled .nav__toggle {
+  color: var(--text-primary);
 }
 .nav__close,
 .nav__toggle {
@@ -347,15 +381,21 @@ img {
 }
 
 /* Hero Unicorn Studio Background */
-.hero__unicorn-bg {
+/* Hero Canvas Background */
+#hero-canvas-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
-  pointer-events: auto; /* Allow hover interactions to work */
   overflow: hidden;
+}
+
+#hero-canvas-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* Ensure Unicorn Studio canvas/content fills the container */
@@ -419,7 +459,7 @@ img {
 
 .hero__description {
   font-size: 1.25rem;
-  color: var(--text-secondary);
+  color: #cbd5e1; /* Slate 300 - Much lighter for dark background */
   max-width: 600px;
   margin: 0 auto var(--space-lg);
   line-height: 1.6;
@@ -429,6 +469,35 @@ img {
   display: flex;
   gap: 1rem;
   justify-content: center;
+}
+
+/* Updated Hero Button for Visibility */
+.hero .btn--primary {
+  background: white;
+  color: var(--accent-color);
+  font-weight: 700;
+  box-shadow: 0 4px 25px rgba(255, 255, 255, 0.25);
+}
+
+.hero .btn--primary:hover {
+  background: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.35);
+  color: var(--accent-dark);
+}
+
+/* Secondary button on dark bg */
+.hero .btn--secondary {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.hero .btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: white;
+  color: white;
 }
 
 /* Floating Orbit Elements */
@@ -1247,6 +1316,10 @@ img {
   .nav__toggle,
   .nav__close {
     display: block;
+    color: #fff;
+  }
+  .header.scrolled .nav-toggle,
+  .header.scrolled .nav__close {
     color: var(--text-primary);
   }
   .nav__close {
