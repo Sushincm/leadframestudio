@@ -276,7 +276,7 @@ class GradientBackground {
   }
 }
 
-class App {
+class LiquidGradientAnimation {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
     if (!this.container) return;
@@ -390,5 +390,7 @@ class App {
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
-  new App("hero-canvas-container");
+  new LiquidGradientAnimation("hero-canvas-container");
+  new LiquidGradientAnimation("value-canvas-container");
+  new LiquidGradientAnimation("contact-canvas-container");
 });

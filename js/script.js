@@ -107,4 +107,102 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     });
   }
+
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    easing: "ease-out",
+    once: true,
+    offset: 50,
+  });
+
+  // Number Counter Animation
+  const animateValue = (obj, start, end, duration) => {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      obj.innerHTML = Math.floor(progress * (end - start) + start);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        obj.innerHTML = end;
+        // Restore original suffix if needed, but for now we replace content.
+        // Better approach: use data attributes or just simple text replacement if strictly numbers.
+        // Given the user request, we need specific counters.
+      }
+    };
+    window.requestAnimationFrame(step);
+  };
+
+  const counterObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counters = entry.target.querySelectorAll(
+            ".solution__stat-value",
+          );
+          counters.forEach((counter) => {
+            // Extract number from text (e.g. "3x" -> 3, "10+" -> 10)
+            const text = counter.innerText;
+            const number = parseFloat(text.replace(/[^0-9.]/g, ""));
+            const suffix = text.replace(/[0-9.]/g, ""); // Keep 'x', '+', etc.
+
+            if (!isNaN(number)) {
+              animateValue(counter, 0, number, 2000);
+              // Note: animateValue as written replaces innerHTML.
+              // We need to preserve the suffix.
+              // Let's modify animateValue slightly inline or wrapper.
+              let startTimestamp = null;
+              const duration = 2000;
+              const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min(
+                  (timestamp - startTimestamp) / duration,
+                  1,
+                );
+                const currentVal = Math.floor(progress * number);
+                counter.innerHTML = currentVal + suffix;
+                if (progress < 1) {
+                  window.requestAnimationFrame(step);
+                } else {
+                  counter.innerHTML = number + suffix;
+                }
+              };
+              window.requestAnimationFrame(step);
+            }
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  const solutionText = document.querySelector(".solution__text");
+  if (solutionText) {
+    counterObserver.observe(solutionText);
+  }
+  // Initialize Lenis Smooth Scroll
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    direction: "vertical",
+    gestureDirection: "vertical",
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  // Connect AOS to Lenis
+  // Update AOS on Lenis scroll to keep animations in sync
+  lenis.on("scroll", AOS.refresh);
 });

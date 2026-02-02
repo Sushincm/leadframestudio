@@ -44,6 +44,11 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Lenis for Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <!-- Three.js (for Hero Animation) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -98,7 +103,7 @@
         <div id="hero-canvas-container"></div>
         <div class="container hero__container">
           <div class="hero__content-wrapper">
-            <div class="hero__badge">Conversion Focused Design</div>
+            <!-- <div class="hero__badge">Conversion Focused Design</div> -->
             <h1 class="hero__title">
               Turn Traffic Into <br />
               <span class="">Revenue</span>
@@ -136,73 +141,62 @@
       <!-- Value/Stats Section -->
       <section class="value section">
         <div class="container">
-          <div class="section__header text-center">
-            <h2 class="section__title">
-              Designed for <span class="text-gradient">Impact</span>
-            </h2>
-            <p class="section__subtitle">
-              We don't just design pages. We engineer digital ecosystems that
-              build trust and drive revenue.
-            </p>
-          </div>
-
           <div class="problem__container">
-            <!-- Reusing grid layout -->
+            <!-- About Us Area -->
             <div class="problem__text">
-              <h3 class="section__title section__title--medium">
-                Strategic Precision.
+              <h3
+                class="section__title section__title--medium"
+                data-aos="fade-up"
+              >
+                About Us
               </h3>
-              <p class="section__subtitle section__subtitle--zero-margin">
-                Every pixel serves a purpose. We combine aesthetic excellence
-                with data-driven user experience strategies.
+              <p
+                class="section__subtitle section__subtitle--zero-margin"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                Leadframe Studio is a premium web design agency dedicated to
+                building digital experiences that drive growth. We combine
+                aesthetic excellence with data-driven strategies to help
+                ambitious brands scale.
               </p>
-              <ul class="value__list">
-                <li>
-                  <i
-                    data-lucide="check-circle"
-                    style="
-                      display: inline;
-                      width: 1.2em;
-                      color: var(--accent-color);
-                      margin-right: 0.5rem;
-                      vertical-align: middle;
-                    "
-                  ></i>
-                  Scalable design systems
-                </li>
-                <li>
-                  <i
-                    data-lucide="check-circle"
-                    style="
-                      display: inline;
-                      width: 1.2em;
-                      color: var(--accent-color);
-                      margin-right: 0.5rem;
-                      vertical-align: middle;
-                    "
-                  ></i>
-                  Conversion-rate optimization
-                </li>
-              </ul>
+              <p
+                class="section__subtitle"
+                data-aos="fade-up"
+                data-aos-delay="200"
+                style="margin-top: 1rem"
+              >
+                Our team of experts specializes in creating high-performance
+                websites that not only look stunning but also convert visitors
+                into loyal customers.
+              </p>
             </div>
 
-            <div class="solution__text">
-              <div class="solution__grid">
-                <div>
-                  <div class="solution__stat-value">3x</div>
-                  <p class="solution__stat-label">Average conversion lift</p>
-                </div>
-                <div>
-                  <div class="solution__stat-value">0.2s</div>
-                  <p class="solution__stat-label">Page load speeds</p>
-                </div>
-                <div>
-                  <div class="solution__stat-value">10+</div>
-                  <p class="solution__stat-label">Website launches</p>
-                </div>
-                <div>
-                  <div class="solution__stat-value">24/7</div>
-                  <p class="solution__stat-label">Support & Monitoring</p>
+            <!-- Solution with Liquified Animation -->
+            <div
+              class="solution__text"
+              id="value-canvas-container"
+              style="position: relative; overflow: hidden"
+            >
+              <!-- Content Wrapper to ensure visibility over canvas -->
+              <div style="position: relative; z-index: 2">
+                <div class="solution__grid">
+                  <div data-aos="zoom-in" data-aos-delay="100">
+                    <div class="solution__stat-value">3x</div>
+                    <p class="solution__stat-label">Average conversion lift</p>
+                  </div>
+                  <div data-aos="zoom-in" data-aos-delay="200">
+                    <div class="solution__stat-value">0.2s</div>
+                    <p class="solution__stat-label">Page load speeds</p>
+                  </div>
+                  <div data-aos="zoom-in" data-aos-delay="300">
+                    <div class="solution__stat-value">10+</div>
+                    <p class="solution__stat-label">Website launches</p>
+                  </div>
+                  <div data-aos="zoom-in" data-aos-delay="300">
+                    <div class="solution__stat-value-static">24/7</div>
+                    <p class="solution__stat-label">Support & Monitoring</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -210,33 +204,155 @@
         </div>
       </section>
 
-      <!-- Services Section -->
-      <section class="services section" id="services">
-        <div class="container">
-          <h2 class="section__title text-center">Our Expertise</h2>
+      <!-- Services Section (Hybrid Layout) -->
+      <section class="levels-sec section" id="services" style="padding: 0">
+        <h2 class="section__title text-center mb-5">Our Expertise</h2>
+
+        <!-- DESKTOP LAYOUT (Levels) - Visible > 992px -->
+        <div class="container full-width-container desktop-levels">
+          <!-- Level I -->
+          <div class="levels-row">
+            <div class="levels-col levels-left">
+              <div class="levels-left-inner">
+                <div class="sticky-wrapper">
+                  <div class="level-header">
+                    <div class="level-num">( I )</div>
+                    <div class="level-label">Strategic Design</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="levels-col levels-right">
+              <div class="level-content">
+                <h2 class="level-headline mb-4" data-aos="fade-up">
+                  Crafting Digital Identities That Command Attention
+                </h2>
+
+                <div class="mb-5">
+                  <span
+                    class="info-label d-block mb-3"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                    >Use Case</span
+                  >
+                  <p
+                    class="overview-text"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    Your website is your 24/7 sales engine. At Leadframe Studio,
+                    we move beyond generic templates to engineer bespoke design
+                    systems that embody your brand's authority. We meticulously
+                    design every interaction to guide your visitors from
+                    curiosity to conversion, ensuring your digital presence is
+                    not just seen, but felt.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Level II -->
+          <div class="levels-row border-top-light">
+            <div class="levels-col levels-left">
+              <div class="levels-left-inner">
+                <div class="sticky-wrapper">
+                  <div class="level-header">
+                    <div class="level-num">( II )</div>
+                    <div class="level-label">Development & Scale</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="levels-col levels-right">
+              <div class="level-content">
+                <h2 class="level-headline mb-4" data-aos="fade-up">
+                  Engineered for Performance and Growth
+                </h2>
+                <div class="mb-5">
+                  <span
+                    class="info-label d-block mb-3"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                    >Tech Stack</span
+                  >
+                  <p
+                    class="overview-text"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    Beautiful design needs a powerful engine. We build
+                    blazing-fast, SEO-optimized web applications using modern
+                    technologies like React, Next.js, and WebGL. Our code is
+                    clean, scalable, and built to handle your growth. Whether
+                    it's a high-converting landing page or a complex SaaS
+                    platform, we deliver performance metrics that your users
+                    (and Google) will love.
+                  </p>
+                </div>
+
+                <a
+                  href="#contact"
+                  class="btn btn--dark rounded-0 px-4 py-2"
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+                  >View Our Stack</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOBILE LAYOUT (Grid) - Visible < 992px -->
+        <div class="container mobile-services">
           <div class="services__grid">
-            <div class="service__card">
-              <div class="service__icon"><i data-lucide="layout"></i></div>
-              <h3 class="service__title">Website Design & Development</h3>
+            <!-- Service 1 -->
+            <div class="service__card" data-aos="fade-up">
+              <div class="service__icon">
+                <i data-lucide="code-2" style="width: 32px; height: 32px"></i>
+              </div>
+              <h3 class="service__title">Web Development</h3>
               <p class="service__description">
-                Custom, responsive websites built from scratch to reflect your
-                brand's unique identity.
+                Building fast, responsive, and scalable websites tailored to
+                your business needs using modern technologies.
               </p>
             </div>
-            <div class="service__card">
-              <div class="service__icon"><i data-lucide="target"></i></div>
+
+            <!-- Service 2 -->
+            <div class="service__card" data-aos="fade-up" data-aos-delay="100">
+              <div class="service__icon">
+                <i
+                  data-lucide="mouse-pointer-click"
+                  style="width: 32px; height: 32px"
+                ></i>
+              </div>
               <h3 class="service__title">Landing Pages & Funnels</h3>
               <p class="service__description">
                 High-impact pages designed specifically to convert traffic into
                 qualified leads.
               </p>
             </div>
-            <div class="service__card">
-              <div class="service__icon"><i data-lucide="zap"></i></div>
+
+            <!-- Service 3 -->
+            <div class="service__card" data-aos="fade-up" data-aos-delay="200">
+              <div class="service__icon">
+                <i data-lucide="zap" style="width: 32px; height: 32px"></i>
+              </div>
               <h3 class="service__title">Performance Optimization</h3>
               <p class="service__description">
                 Speed optimization and technical SEO to ensure your site ranks
                 high and loads instantly.
+              </p>
+            </div>
+            <!-- Service 4 -->
+            <div class="service__card" data-aos="fade-up" data-aos-delay="300">
+              <div class="service__icon">
+                <i data-lucide="search" style="width: 32px; height: 32px"></i>
+              </div>
+              <h3 class="service__title">SEO Optimization</h3>
+              <p class="service__description">
+                Enhancing your online visibility to drive organic traffic and
+                improve search engine rankings.
               </p>
             </div>
           </div>
@@ -293,17 +409,23 @@
           <div class="work__grid">
             <!-- Project 1 -->
             <article class="work__card">
-              <div class="work__img-wrapper">
+              <div
+                class="work__img-wrapper"
+                style="background-image: url(assets/images/project-1.jpg)"
+              >
                 <!-- Placeholder gradient will be handled by CSS -->
                 <div class="work__overlay">
-                  <a href="#" class="btn btn--small btn--white"
+                  <a
+                    href="https://gym-center-gold.vercel.app"
+                    class="btn btn--small btn--white"
+                    target="_blank"
                     >View Case Study</a
                   >
                 </div>
               </div>
               <div class="work__content">
-                <span class="work__category">Fintech</span>
-                <h3 class="work__title">Nova Finance App</h3>
+                <span class="work__category">Landing Page</span>
+                <h3 class="work__title">Kinetic Gym center</h3>
                 <p class="work__description">
                   Redesigned the onboarding flow, increasing user activation by
                   45%.
@@ -313,19 +435,24 @@
 
             <!-- Project 2 -->
             <article class="work__card">
-              <div class="work__img-wrapper">
+              <div
+                class="work__img-wrapper"
+                style="background-image: url(assets/images/project-2.jpg)"
+              >
                 <div class="work__overlay">
-                  <a href="#" class="btn btn--small btn--white"
+                  <a
+                    href="https://dental-clinic-gold.vercel.app/"
+                    class="btn btn--small btn--white"
                     >View Case Study</a
                   >
                 </div>
               </div>
               <div class="work__content">
-                <span class="work__category">E-Commerce</span>
-                <h3 class="work__title">Luxe Apparel</h3>
+                <span class="work__category">Landing Page</span>
+                <h3 class="work__title">Dental clinic</h3>
                 <p class="work__description">
-                  Headless Shopify storefront with sub-second page loads and 3D
-                  product previews.
+                  Optimized patient booking experience, leading to a 35%
+                  increase in online appointment scheduling.
                 </p>
               </div>
             </article>
@@ -857,45 +984,55 @@
               </div>
             </div>
 
-            <div class="contact__form-wrapper">
-              <form class="contact__form" id="contact-form">
-                <h3 class="form__title">Send an Enquiry</h3>
-                <div class="form__group">
-                  <label for="name" class="form__label">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    class="form__input"
-                    placeholder="John Doe"
-                    required
-                  />
-                </div>
-                <div class="form__group">
-                  <label for="email" class="form__label">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    class="form__input"
-                    placeholder="john@company.com"
-                    required
-                  />
-                </div>
-                <div class="form__group">
-                  <label for="message" class="form__label"
-                    >Project Details</label
-                  >
-                  <textarea
-                    id="message"
-                    class="form__input"
-                    rows="4"
-                    placeholder="Tell us about your goals..."
-                  ></textarea>
-                </div>
-                <button type="submit" class="btn btn--primary btn--full">
-                  <span class="btn__text">Send Message</span>
-                  <i data-lucide="arrow-right" class="btn__icon"></i>
-                </button>
-              </form>
+            <div
+              class="contact__form-wrapper"
+              id="contact-canvas-container"
+              style="position: relative; overflow: hidden"
+            >
+              <div style="position: relative; z-index: 2">
+                <form
+                  class="contact__form"
+                  id="contact-form"
+                  style="background: transparent"
+                >
+                  <h3 class="form__title">Send an Enquiry</h3>
+                  <div class="form__group">
+                    <label for="name" class="form__label">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      class="form__input"
+                      placeholder="John Doe"
+                      required
+                    />
+                  </div>
+                  <div class="form__group">
+                    <label for="email" class="form__label">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      class="form__input"
+                      placeholder="john@company.com"
+                      required
+                    />
+                  </div>
+                  <div class="form__group">
+                    <label for="message" class="form__label"
+                      >Project Details</label
+                    >
+                    <textarea
+                      id="message"
+                      class="form__input"
+                      rows="4"
+                      placeholder="Tell us about your goals..."
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="btn btn--primary btn--full">
+                    <span class="btn__text">Send Message</span>
+                    <i data-lucide="arrow-right" class="btn__icon"></i>
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -973,6 +1110,8 @@
         }
       })();
     </script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/script.js"></script>
     <script src="js/bg-animation.js"></script>
   </body>
