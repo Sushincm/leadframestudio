@@ -1025,7 +1025,13 @@ img {
 .form__input::placeholder {
   color: var(--text-tertiary);
 }
-
+.contact__img img{
+  height: 250px;
+  object-fit: cover;
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 12px;
+}
 /* Insights Section */
 .insights__grid {
   display: grid;
