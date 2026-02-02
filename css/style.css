@@ -1479,7 +1479,13 @@ img {
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
-
+.submit-btn{
+  background-color: #fff;
+  color: #000;
+}
+.submit-btn:hover{
+  color: #fff;
+}
 /* --- HYBRID SERVICES LAYOUT --- */
 /* Default: Desktop Levels Only */
 .desktop-levels {
