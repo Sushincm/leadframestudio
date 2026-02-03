@@ -203,7 +203,7 @@ img {
 }
 
 .header.scrolled .header-cta-btn {
-  background: var(--accent-color);
+  background: #000;
   color: white;
   border: none;
   box-shadow: 0 4px 15px -3px rgba(124, 58, 237, 0.5);
