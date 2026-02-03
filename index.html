@@ -949,6 +949,31 @@
         </div>
       </section>
 
+      <!-- Card Scanner Section -->
+      <section class="card-scanner section" id="card-scanner">
+        <div class="scanner-container">
+          <div id="scanner-canvas-container"></div>
+
+          <canvas id="particleCanvas"></canvas>
+          <canvas id="scannerCanvas"></canvas>
+
+          <div class="card-stream" id="cardStream">
+            <div class="card-line" id="cardLine"></div>
+          </div>
+
+          <div class="section__header text-center scanner-header">
+            <h2 class="section__title">
+              Stop Burning Cash on
+              <span class="text-block">Bad Websites</span>
+            </h2>
+            <p class="section__subtitle">
+              We scan your business and reveal the hidden code to
+              high-converting websites—without the expensive trial and error.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- CTA / Contact Section (Redesigned) -->
       <section class="contact section" id="contact">
         <div class="container">
@@ -1024,7 +1049,10 @@
                       placeholder="Tell us about your goals..."
                     ></textarea>
                   </div>
-                  <button type="submit" class="btn btn--primary btn--full submit-btn">
+                  <button
+                    type="submit"
+                    class="btn btn--primary btn--full submit-btn"
+                  >
                     <span class="btn__text">Send Message</span>
                     <i data-lucide="arrow-right" class="btn__icon"></i>
                   </button>
@@ -1079,6 +1107,8 @@
 
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/card-scanner.js"></script>
     <script src="js/script.js"></script>
     <script src="js/bg-animation.js"></script>
   </body>

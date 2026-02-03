@@ -112,7 +112,7 @@ img {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
+  display: block;
 }
 
 /* Animations */
@@ -928,15 +928,7 @@ img {
   position: relative;
   box-shadow: var(--shadow-card);
 }
-.contact__wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background: var(--accent-gradient);
-}
+
 .contact__title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -1314,6 +1306,9 @@ img {
   .nav.show-menu {
     right: 0;
   }
+  .nav.show-menu .nav__close{
+    color: #000 !important;
+  }
   .nav__list {
     flex-direction: column;
     gap: 2rem;
@@ -1431,7 +1426,6 @@ img {
   .contact__wrapper {
     gap: 0;
   }
-
 }
 
 @media (max-width: 992px) {
@@ -1479,11 +1473,11 @@ img {
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
-.submit-btn{
+.submit-btn {
   background-color: #fff;
   color: #000;
 }
-.submit-btn:hover{
+.submit-btn:hover {
   color: #fff;
 }
 /* --- HYBRID SERVICES LAYOUT --- */
@@ -1673,5 +1667,303 @@ img {
   }
   .levels-row.border-top-light {
     border-top: none; /* Already separated by stack */
+  }
+}
+
+/* ========================================
+   CARD SCANNER SECTION
+   ======================================== */
+.text-block{
+  display: block;
+}
+.card-scanner {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  min-height: 100vh;
+  background: #0f172a; /* Fallback color */
+}
+
+#scanner-canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#scanner-canvas-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.scanner-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scanner-header {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  max-width: 900px;
+  width: 90%;
+}
+
+.scanner-header .section__title {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.scanner-header .section__subtitle {
+  color: #cbd5e1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.card-stream {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  overflow: visible;
+  top: 50%;
+  transform: translateY(-20%);
+  z-index: 10;
+  width: 100%;
+}
+
+.card-line {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  white-space: nowrap;
+  cursor: grab;
+  user-select: none;
+  will-change: transform;
+}
+
+.card-line:active {
+  cursor: grabbing;
+}
+
+.card-line.dragging {
+  cursor: grabbing;
+}
+
+.card-wrapper {
+  position: relative;
+  width: 400px;
+  height: 250px;
+  flex-shrink: 0;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-normal {
+  background: transparent;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  color: white;
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  filter: brightness(1.1) contrast(1.1);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-image:hover {
+  filter: brightness(1.2) contrast(1.2);
+}
+
+.card-ascii {
+  background: transparent;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.ascii-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: rgba(196, 181, 253, 0.6);
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  line-height: 13px;
+  overflow: hidden;
+  white-space: pre;
+  clip-path: inset(0 calc(100% - var(--clip-left, 0%)) 0 0);
+  animation: glitch 0.1s infinite linear alternate-reverse;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  vertical-align: top;
+  box-sizing: border-box;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.8) 30%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.4) 80%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.8) 30%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.4) 80%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+@keyframes glitch {
+  0% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  16% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.card-normal {
+  clip-path: inset(0 0 0 var(--clip-right, 0%));
+}
+
+.card-ascii {
+  clip-path: inset(0 calc(100% - var(--clip-left, 0%)) 0 0);
+}
+
+.scan-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124, 58, 237, 0.4),
+    transparent
+  );
+  animation: scanEffect 0.6s ease-out;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes scanEffect {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+#particleCanvas {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-25%);
+  width: 100vw;
+  height: 250px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#scannerCanvas {
+  position: absolute;
+  top: 50%;
+  left: -3px;
+  transform: translateY(-25%);
+  width: 100vw;
+  height: 300px;
+  z-index: 15;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-wrapper {
+    width: 300px;
+    height: 188px;
+  }
+
+  .card,
+  .card-normal,
+  .card-ascii {
+    width: 300px;
+    height: 188px;
+  }
+
+  .card-line {
+    gap: 40px;
+  }
+
+  .scanner-header {
+    top: 5%;
+  }
+
+  .scanner-header .section__title {
+    font-size: 2rem;
+  }
+
+  .scanner-header .section__subtitle {
+    font-size: 1rem;
   }
 }

@@ -393,4 +393,5 @@ document.addEventListener("DOMContentLoaded", () => {
   new LiquidGradientAnimation("hero-canvas-container");
   new LiquidGradientAnimation("value-canvas-container");
   new LiquidGradientAnimation("contact-canvas-container");
+  new LiquidGradientAnimation("scanner-canvas-container");
 });
