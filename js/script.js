@@ -84,27 +84,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // FORM HANDLING
   const contactForm = document.getElementById("contact-form");
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
+
+  // Supabase Configuration
+  const SUPABASE_URL = "https://muviicdrytagcbdgqbvn.supabase.co";
+  const SUPABASE_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11dmlpY2RyeXRhZ2NiZGdxYnZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2MTI0MjcsImV4cCI6MjA4NjE4ODQyN30.cJ86VJ40vICeIVKPG5-smOhI41F9NmH49kick3RYZ7c";
+
+  if (contactForm && window.supabase) {
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY,
+    );
+
+    contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const btn = contactForm.querySelector(".btn");
       const originalText = btn.innerHTML;
 
+      // Get form data
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+
+      // Get Project Details (renamed from message)
+      const projectDetailsEl = document.getElementById("project_details");
+      const projectDetails = projectDetailsEl ? projectDetailsEl.value : "";
+
+      // Use project details for both fields to ensure data compatibility
+      const message = projectDetails;
+
       // Loading state
       btn.innerHTML = "Sending...";
       btn.style.opacity = "0.8";
+      btn.disabled = true;
 
-      setTimeout(() => {
+      try {
+        const { error } = await supabaseClient.from("form_submissions").insert([
+          {
+            name,
+            email,
+            message: message, // Standard field
+            project_details: projectDetails, // New specific field
+            source_page: "landing_page",
+            service_interest: "General Inquiry",
+          },
+        ]);
+
+        if (error) throw error;
+
+        // Success state
         btn.innerHTML = "Message Sent!";
-        btn.style.backgroundColor = "var(--success-color)";
+        btn.style.backgroundColor = "var(--success-color)"; // Ensure this var exists or use specific color
+        if (
+          !getComputedStyle(document.documentElement).getPropertyValue(
+            "--success-color",
+          )
+        ) {
+          btn.style.backgroundColor = "#10b981";
+        }
         btn.style.opacity = "1";
 
         contactForm.reset();
+
         setTimeout(() => {
           btn.innerHTML = originalText;
           btn.style.backgroundColor = "";
+          btn.disabled = false;
         }, 3000);
-      }, 1000);
+      } catch (err) {
+        console.error("Submission error:", err);
+        btn.innerHTML = "Error. Try again.";
+        btn.style.backgroundColor = "#ef4444";
+
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.backgroundColor = "";
+          btn.disabled = false;
+        }, 3000);
+      }
     });
   }
 

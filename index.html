@@ -49,6 +49,9 @@
 
     <!-- Three.js (for Hero Animation) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -63,9 +66,7 @@
             <li class="nav__item">
               <a href="#process" class="nav__link">Process</a>
             </li>
-            <li class="nav__item">
-              <a href="#work" class="nav__link">Work</a>
-            </li>
+
             <li class="nav__item">
               <a href="#testimonials" class="nav__link">Testimonials</a>
             </li>
@@ -102,19 +103,44 @@
           <div class="hero__content-wrapper">
             <!-- <div class="hero__badge">Conversion Focused Design</div> -->
             <h1 class="hero__title">
-              Turn Traffic Into <br />
-              <span class="">Revenue</span>
+              <span data-section="Hero" data-field="title_top"
+                >Turn Traffic Into</span
+              >
+              <br />
+              <span class="" data-section="Hero" data-field="title_span"
+                >Revenue</span
+              >
             </h1>
-            <p class="hero__description">
+            <p
+              class="hero__description"
+              data-section="Hero"
+              data-field="description"
+            >
               We build premium, high-converting websites for ambition-led
               brands. Modern aesthetics meet serious performance.
             </p>
             <div class="hero__btns">
-              <a href="#contact" class="btn btn--primary">
-                get a high-converting website
+              <a
+                href="#contact"
+                class="btn btn--primary"
+                data-section="Hero"
+                data-field="btn_primary_link"
+              >
+                <span data-section="Hero" data-field="btn_primary_text"
+                  >get a high-converting website</span
+                >
                 <i data-lucide="arrow-right" class="btn__icon"></i>
               </a>
-              <a href="#work" class="btn btn--secondary">View Selected Work</a>
+              <a
+                href="#contact"
+                class="btn btn--secondary"
+                data-section="Hero"
+                data-field="btn_secondary_link"
+              >
+                <span data-section="Hero" data-field="btn_secondary_text"
+                  >Get Started</span
+                >
+              </a>
             </div>
           </div>
         </div>
@@ -123,7 +149,13 @@
       <!-- Social Proof -->
       <section class="social-proof">
         <div class="container">
-          <p class="social-proof__label">Trusted by high-growth companies</p>
+          <p
+            class="social-proof__label"
+            data-section="Social Proof"
+            data-field="label"
+          >
+            Trusted by high-growth companies
+          </p>
           <div class="logos__track">
             <div class="logo-item">VERTEX</div>
             <div class="logo-item">LAYER</div>
@@ -144,6 +176,8 @@
               <h3
                 class="section__title section__title--medium"
                 data-aos="fade-up"
+                data-section="About"
+                data-field="title"
               >
                 About Us
               </h3>
@@ -151,6 +185,8 @@
                 class="section__subtitle section__subtitle--zero-margin"
                 data-aos="fade-up"
                 data-aos-delay="100"
+                data-section="About"
+                data-field="subtitle_1"
               >
                 Leadframe Studio is a premium web design agency dedicated to
                 building digital experiences that drive growth. We combine
@@ -162,6 +198,8 @@
                 data-aos="fade-up"
                 data-aos-delay="200"
                 style="margin-top: 1rem"
+                data-section="About"
+                data-field="subtitle_2"
               >
                 Our team of experts specializes in creating high-performance
                 websites that not only look stunning but also convert visitors
@@ -177,22 +215,41 @@
             >
               <!-- Content Wrapper to ensure visibility over canvas -->
               <div style="position: relative; z-index: 2">
-                <div class="solution__grid">
+                <div class="solution__grid" data-section="Stats">
                   <div data-aos="zoom-in" data-aos-delay="100">
-                    <div class="solution__stat-value">3x</div>
-                    <p class="solution__stat-label">Average conversion lift</p>
+                    <div class="solution__stat-value" data-field="stat_1_value">
+                      3x
+                    </div>
+                    <p class="solution__stat-label" data-field="stat_1_label">
+                      Average conversion lift
+                    </p>
                   </div>
                   <div data-aos="zoom-in" data-aos-delay="200">
-                    <div class="solution__stat-value">0.2s</div>
-                    <p class="solution__stat-label">Page load speeds</p>
+                    <div class="solution__stat-value" data-field="stat_2_value">
+                      0.2s
+                    </div>
+                    <p class="solution__stat-label" data-field="stat_2_label">
+                      Page load speeds
+                    </p>
                   </div>
                   <div data-aos="zoom-in" data-aos-delay="300">
-                    <div class="solution__stat-value">10+</div>
-                    <p class="solution__stat-label">Website launches</p>
+                    <div class="solution__stat-value" data-field="stat_3_value">
+                      10+
+                    </div>
+                    <p class="solution__stat-label" data-field="stat_3_label">
+                      Website launches
+                    </p>
                   </div>
                   <div data-aos="zoom-in" data-aos-delay="300">
-                    <div class="solution__stat-value-static">24/7</div>
-                    <p class="solution__stat-label">Support & Monitoring</p>
+                    <div
+                      class="solution__stat-value-static"
+                      data-field="stat_4_value"
+                    >
+                      24/7
+                    </div>
+                    <p class="solution__stat-label" data-field="stat_4_label">
+                      Support & Monitoring
+                    </p>
                   </div>
                 </div>
               </div>
@@ -203,7 +260,13 @@
 
       <!-- Services Section (Hybrid Layout) -->
       <section class="levels-sec section" id="services">
-        <h2 class="section__title text-center mb-5">Our Expertise</h2>
+        <h2
+          class="section__title text-center mb-5"
+          data-section="Services"
+          data-field="main_title"
+        >
+          Our Expertise
+        </h2>
 
         <!-- DESKTOP LAYOUT (Levels) - Visible > 992px -->
         <div class="container full-width-container desktop-levels">
@@ -213,15 +276,32 @@
               <div class="levels-left-inner">
                 <div class="sticky-wrapper">
                   <div class="level-header">
-                    <div class="level-num">( I )</div>
-                    <div class="level-label">Strategic Design</div>
+                    <div
+                      class="level-num"
+                      data-section="Services"
+                      data-field="level_1_num"
+                    >
+                      ( I )
+                    </div>
+                    <div
+                      class="level-label"
+                      data-section="Services"
+                      data-field="level_1_title"
+                    >
+                      Strategic Design
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="levels-col levels-right">
               <div class="level-content">
-                <h2 class="level-headline mb-4" data-aos="fade-up">
+                <h2
+                  class="level-headline mb-4"
+                  data-aos="fade-up"
+                  data-section="Services"
+                  data-field="level_1_headline"
+                >
                   Crafting Digital Identities That Command Attention
                 </h2>
 
@@ -236,6 +316,8 @@
                     class="overview-text"
                     data-aos="fade-up"
                     data-aos-delay="200"
+                    data-section="Services"
+                    data-field="level_1_desc"
                   >
                     Your website is your 24/7 sales engine. At Leadframe Studio,
                     we move beyond generic templates to engineer bespoke design
@@ -255,15 +337,32 @@
               <div class="levels-left-inner">
                 <div class="sticky-wrapper">
                   <div class="level-header">
-                    <div class="level-num">( II )</div>
-                    <div class="level-label">Development & Scale</div>
+                    <div
+                      class="level-num"
+                      data-section="Services"
+                      data-field="level_2_num"
+                    >
+                      ( II )
+                    </div>
+                    <div
+                      class="level-label"
+                      data-section="Services"
+                      data-field="level_2_title"
+                    >
+                      Development & Scale
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="levels-col levels-right">
               <div class="level-content">
-                <h2 class="level-headline mb-4" data-aos="fade-up">
+                <h2
+                  class="level-headline mb-4"
+                  data-aos="fade-up"
+                  data-section="Services"
+                  data-field="level_2_headline"
+                >
                   Engineered for Performance and Growth
                 </h2>
                 <div class="mb-5">
@@ -277,6 +376,8 @@
                     class="overview-text"
                     data-aos="fade-up"
                     data-aos-delay="200"
+                    data-section="Services"
+                    data-field="level_2_desc"
                   >
                     Beautiful design needs a powerful engine. We build
                     blazing-fast, SEO-optimized web applications using modern
@@ -359,119 +460,106 @@
       <!-- Process Section -->
       <section class="process section" id="process">
         <div class="container">
-          <h2 class="section__title text-center">How We Work</h2>
+          <h2
+            class="section__title text-center"
+            data-section="Process"
+            data-field="title"
+          >
+            How We Work
+          </h2>
           <div class="process__steps">
             <div class="process__step">
-              <div class="process__number">01</div>
-              <h3 class="process__title">Discovery & Strategy</h3>
-              <p class="process__description">
+              <div
+                class="process__number"
+                data-section="Process"
+                data-field="step_1_num"
+              >
+                01
+              </div>
+              <h3
+                class="process__title"
+                data-section="Process"
+                data-field="step_1_title"
+              >
+                Discovery & Strategy
+              </h3>
+              <p
+                class="process__description"
+                data-section="Process"
+                data-field="step_1_desc"
+              >
                 We dive deep into your business goals and target audience.
               </p>
             </div>
             <div class="process__step">
-              <div class="process__number">02</div>
-              <h3 class="process__title">Design & Wireframes</h3>
-              <p class="process__description">
+              <div
+                class="process__number"
+                data-section="Process"
+                data-field="step_2_num"
+              >
+                02
+              </div>
+              <h3
+                class="process__title"
+                data-section="Process"
+                data-field="step_2_title"
+              >
+                Design & Wireframes
+              </h3>
+              <p
+                class="process__description"
+                data-section="Process"
+                data-field="step_2_desc"
+              >
                 We create a conversion-focused layout and visual style.
               </p>
             </div>
             <div class="process__step">
-              <div class="process__number">03</div>
-              <h3 class="process__title">Development</h3>
-              <p class="process__description">
+              <div
+                class="process__number"
+                data-section="Process"
+                data-field="step_3_num"
+              >
+                03
+              </div>
+              <h3
+                class="process__title"
+                data-section="Process"
+                data-field="step_3_title"
+              >
+                Development
+              </h3>
+              <p
+                class="process__description"
+                data-section="Process"
+                data-field="step_3_desc"
+              >
                 We build your site using clean, semantic code.
               </p>
             </div>
             <div class="process__step">
-              <div class="process__number">04</div>
-              <h3 class="process__title">Launch & Growth</h3>
-              <p class="process__description">
+              <div
+                class="process__number"
+                data-section="Process"
+                data-field="step_4_num"
+              >
+                04
+              </div>
+              <h3
+                class="process__title"
+                data-section="Process"
+                data-field="step_4_title"
+              >
+                Launch & Growth
+              </h3>
+              <p
+                class="process__description"
+                data-section="Process"
+                data-field="step_4_desc"
+              >
                 We test, launch, and help you scale.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Work Section -->
-      <section class="work section" id="work">
-        <div class="container">
-          <div class="section__header text-center">
-            <h2 class="section__title">Selected Work</h2>
-            <p class="section__subtitle">
-              High-performance digital products we've engineered.
-            </p>
-          </div>
-
-          <div class="work__grid">
-            <!-- Project 1 -->
-            <article class="work__card">
-              <div
-                class="work__img-wrapper"
-                style="background-image: url(assets/images/project-1.jpg)"
-              >
-                <!-- Placeholder gradient will be handled by CSS -->
-                <div class="work__overlay">
-                  <a
-                    href="https://gym-center-gold.vercel.app"
-                    class="btn btn--small btn--white"
-                    target="_blank"
-                    >View Case Study</a
-                  >
-                </div>
-              </div>
-              <div class="work__content">
-                <span class="work__category">Landing Page</span>
-                <h3 class="work__title">Kinetic Gym center</h3>
-                <p class="work__description">
-                  Redesigned the onboarding flow, increasing user activation by
-                  45%.
-                </p>
-              </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="work__card">
-              <div
-                class="work__img-wrapper"
-                style="background-image: url(assets/images/project-2.jpg)"
-              >
-                <div class="work__overlay">
-                  <a
-                    href="https://dental-clinic-gold.vercel.app/"
-                    class="btn btn--small btn--white"
-                    >View Case Study</a
-                  >
-                </div>
-              </div>
-              <div class="work__content">
-                <span class="work__category">Landing Page</span>
-                <h3 class="work__title">Dental clinic</h3>
-                <p class="work__description">
-                  Optimized patient booking experience, leading to a 35%
-                  increase in online appointment scheduling.
-                </p>
-              </div>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="work__card">
-              <div class="work__img-wrapper">
-                <div class="work__overlay">
-                  <a href="#" class="btn btn--small btn--white"
-                    >View Case Study</a
-                  >
-                </div>
-              </div>
-              <div class="work__content">
-                <span class="work__category">SaaS</span>
-                <h3 class="work__title">TaskFlow Pro</h3>
-                <p class="work__description">
-                  Marketing site for a project management tool. 2x increase in
-                  trial signups.
-                </p>
-              </div>
-            </article>
           </div>
         </div>
       </section>
@@ -963,10 +1051,21 @@
 
           <div class="section__header text-center scanner-header">
             <h2 class="section__title">
-              Stop Burning Cash on
-              <span class="text-block">Bad Websites</span>
+              <span data-section="Card Scanner" data-field="title_top"
+                >Stop Burning Cash on</span
+              >
+              <span
+                class="text-block"
+                data-section="Card Scanner"
+                data-field="title_span"
+                >Bad Websites</span
+              >
             </h2>
-            <p class="section__subtitle">
+            <p
+              class="section__subtitle"
+              data-section="Card Scanner"
+              data-field="description"
+            >
               We scan your business and reveal the hidden code to
               high-converting websites—without the expensive trial and error.
             </p>
@@ -980,10 +1079,21 @@
           <div class="contact__wrapper">
             <div class="contact__content">
               <h2 class="contact__title">
-                Let's build something
-                <span class="text-gradient">extraordinary</span>
+                <span data-section="Contact" data-field="title_top"
+                  >Let's build something</span
+                >
+                <span
+                  class="text-gradient"
+                  data-section="Contact"
+                  data-field="title_span"
+                  >extraordinary</span
+                >
               </h2>
-              <p class="contact__desc">
+              <p
+                class="contact__desc"
+                data-section="Contact"
+                data-field="description"
+              >
                 Ready to scale? We're taking on new projects for Q1. Schedule a
                 free strategy session to discuss your goals.
               </p>
@@ -992,10 +1102,17 @@
                 <div class="contact__item">
                   <div class="contact__icon"><i data-lucide="mail"></i></div>
                   <div>
-                    <span class="contact__label">Email Us</span>
+                    <span
+                      class="contact__label"
+                      data-section="Contact"
+                      data-field="email_label"
+                      >Email Us</span
+                    >
                     <a
                       href="mailto:hello@leadframestudio.com"
                       class="contact__link"
+                      data-section="Contact"
+                      data-field="email_address"
                       >hello@leadframestudio.com</a
                     >
                   </div>
@@ -1017,7 +1134,13 @@
                   id="contact-form"
                   style="background: transparent"
                 >
-                  <h3 class="form__title">Send an Enquiry</h3>
+                  <h3
+                    class="form__title"
+                    data-section="Contact"
+                    data-field="form_title"
+                  >
+                    Send an Enquiry
+                  </h3>
                   <div class="form__group">
                     <label for="name" class="form__label">Name</label>
                     <input
@@ -1039,11 +1162,11 @@
                     />
                   </div>
                   <div class="form__group">
-                    <label for="message" class="form__label"
+                    <label for="project_details" class="form__label"
                       >Project Details</label
                     >
                     <textarea
-                      id="message"
+                      id="project_details"
                       class="form__input"
                       rows="4"
                       placeholder="Tell us about your goals..."
@@ -1069,7 +1192,11 @@
       <div class="container footer__container">
         <div class="footer__brand">
           <a href="#" class="footer__logo">Leadframe Studio</a>
-          <p class="footer__description">
+          <p
+            class="footer__description"
+            data-section="Footer"
+            data-field="brand_desc"
+          >
             High-performance web design for growth-focused businesses.
           </p>
         </div>
@@ -1093,14 +1220,13 @@
         </div>
       </div>
       <div class="footer__bottom container">
-        <p class="footer__copy">
+        <p class="footer__copy" data-section="Footer" data-field="copyright">
           &copy; 2026 Leadframe Studio. All rights reserved.
         </p>
       </div>
     </footer>
 
     <!-- JS -->
-    <script src="js/script.js"></script>
     <script>
       lucide.createIcons();
     </script>
@@ -1110,6 +1236,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="js/card-scanner.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/cms.js"></script>
     <script src="js/bg-animation.js"></script>
   </body>
 </html>
