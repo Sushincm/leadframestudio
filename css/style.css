@@ -296,8 +296,9 @@ img {
 .header {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  width: 90%;
+  transform: translateX(-50%);
   z-index: 1000;
   background-color: transparent;
   border-bottom: 1px solid transparent;
@@ -306,6 +307,8 @@ img {
   color: #fff; /* Default text color (on Hero) */
 }
 .header.scrolled {
+  top: 20px;
+  border-radius: 60px;
   background-color: rgba(255, 255, 255, 0.9); /* White Glass */
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-light);
@@ -1285,28 +1288,38 @@ img {
   vertical-align: middle;
 }
 
+.whatsapp-section {
+  background-image: url("../assets/images/whatsapp-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  display: none;
+}
+
 /* Responsive */
 
 @media screen and (max-width: 991px) {
   .nav {
     position: fixed;
-    top: 0;
-    right: -100%;
+    top: 20px;
+    right: 0;
+    transform: translateX(140%);
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 40px);
     background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: 0.4s var(--ease-out-expo);
+    transition: 0.4s all;
     z-index: 1000;
+    border-radius: 20px;
   }
   .nav.show-menu {
-    right: 0;
+    transform: translateX(0);
+    top: 20px;
   }
-  .nav.show-menu .nav__close{
+  .nav.show-menu .nav__close {
     color: #000 !important;
   }
   .nav__list {
@@ -1386,6 +1399,9 @@ img {
   /* Social Proof Responsive */
   .logos__track {
     gap: 2rem;
+  }
+  .whatsapp-section{
+    display: block
   }
 }
 @media (max-width: 650px) {
@@ -1673,7 +1689,7 @@ img {
 /* ========================================
    CARD SCANNER SECTION
    ======================================== */
-.text-block{
+.text-block {
   display: block;
 }
 .card-scanner {
@@ -1965,5 +1981,112 @@ img {
 
   .scanner-header .section__subtitle {
     font-size: 1rem;
+  }
+}
+
+/* =========================================
+   WHATSAPP FLOATING ANIMATIONS
+   ========================================= */
+
+.whatsapp-section {
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+  /* Background image is handled by user logic or existing styles if any. 
+     If not, it might just show white or parent bg. */
+}
+
+.whatsapp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Remove col styles since we are single column now */
+.whatsapp-col,
+.whatsapp-col--left,
+.whatsapp-col--right {
+  display: none; /* Just in case legacy stuff exists, but we removed it from HTML */
+}
+
+.whatsapp-msg {
+  position: relative;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  animation: float-msg 6s ease-in-out infinite;
+  transition: transform 0.3s ease;
+
+  /* Default to "client" style (white/gray) for ALL messages */
+  background: #ffffff;
+  color: #111b21;
+}
+
+.whatsapp-msg:hover {
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Left Alignment */
+.whatsapp-msg--left {
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+/* Right Alignment */
+.whatsapp-msg--right {
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  text-align: left; /* Keep text aligned left inside bubble */
+  /* Ensure background is SAME as left (client message) */
+  background: #ffffff;
+}
+
+/* Randomize Float Delays */
+.whatsapp-msg:nth-child(1) {
+  animation-delay: 0s;
+}
+.whatsapp-msg:nth-child(2) {
+  animation-delay: 1.5s;
+}
+.whatsapp-msg:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.whatsapp-msg:nth-child(4) {
+  animation-delay: 2s;
+}
+.whatsapp-msg:nth-child(5) {
+  animation-delay: 1s;
+}
+
+@keyframes float-msg {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .whatsapp-grid {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .whatsapp-msg {
+    max-width: 90%;
+    font-size: 0.95rem;
+    padding: 0.875rem 1.25rem;
   }
 }
