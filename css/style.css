@@ -1400,8 +1400,8 @@ img {
   .logos__track {
     gap: 2rem;
   }
-  .whatsapp-section{
-    display: block
+  .whatsapp-section {
+    display: block;
   }
 }
 @media (max-width: 650px) {
@@ -1989,65 +1989,94 @@ img {
    ========================================= */
 
 .whatsapp-section {
-  padding: 4rem 0;
+  padding: var(--space-3xl) 0;
   position: relative;
   overflow: hidden;
-  /* Background image is handled by user logic or existing styles if any. 
-     If not, it might just show white or parent bg. */
+  background-color: rgba(
+    248,
+    250,
+    252,
+    0.5
+  ); /* Light gray/blue background with reduced opacity */
+}
+
+/* Add a subtle pattern overlay if desired, or keep clean */
+.whatsapp-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(124, 58, 237, 0.03) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
 }
 
 .whatsapp-grid {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  max-width: 800px;
+  gap: 2rem;
+  max-width: 700px; /* Tighter focus */
   margin: 0 auto;
-}
-
-/* Remove col styles since we are single column now */
-.whatsapp-col,
-.whatsapp-col--left,
-.whatsapp-col--right {
-  display: none; /* Just in case legacy stuff exists, but we removed it from HTML */
 }
 
 .whatsapp-msg {
   position: relative;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 2rem;
   border-radius: 20px;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  max-width: 80%;
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 10px 15px -3px rgba(0, 0, 0, 0.05); /* Premium soft shadow */
+  max-width: 85%;
   animation: float-msg 6s ease-in-out infinite;
   transition: transform 0.3s ease;
-
-  /* Default to "client" style (white/gray) for ALL messages */
-  background: #ffffff;
-  color: #111b21;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .whatsapp-msg:hover {
   transform: scale(1.02) translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  z-index: 10;
 }
 
-/* Left Alignment */
+/* Left Alignment (Client) */
 .whatsapp-msg--left {
   align-self: flex-start;
   border-bottom-left-radius: 4px;
+  background: white;
+  color: var(--text-primary);
 }
 
-/* Right Alignment */
+/* Right Alignment (Agency Reply) */
 .whatsapp-msg--right {
   align-self: flex-end;
   border-bottom-right-radius: 4px;
-  text-align: left; /* Keep text aligned left inside bubble */
-  /* Ensure background is SAME as left (client message) */
-  background: #ffffff;
+  text-align: left;
+  background: linear-gradient(
+    135deg,
+    #f5f3ff 0%,
+    white 100%
+  ); /* Subtle violet tint */
+  color: var(--text-primary);
+  border-color: rgba(124, 58, 237, 0.1);
+}
+
+.whatsapp-time {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin-top: 0.5rem;
+  text-align: right;
+  font-weight: 500;
 }
 
 /* Randomize Float Delays */
@@ -2079,14 +2108,18 @@ img {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+  .whatsapp-section {
+    padding: var(--space-xl) 0;
+  }
+
   .whatsapp-grid {
-    gap: 1rem;
-    padding: 0 1rem;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
   }
 
   .whatsapp-msg {
-    max-width: 90%;
+    max-width: 100%;
     font-size: 0.95rem;
-    padding: 0.875rem 1.25rem;
+    padding: 1.25rem;
   }
 }
