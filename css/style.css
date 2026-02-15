@@ -25,7 +25,6 @@
   --space-xl: 3rem; /* 48px */
   --space-2xl: 4rem; /* 64px */
   --space-3xl: 6rem; /* 96px */
-
   /* UI Tokens */
   --container-width: 1280px;
   --header-height: 80px;
@@ -93,7 +92,12 @@ img {
   height: auto;
   display: block;
 }
-
+.pb-0 {
+  padding-bottom: 0 !important;
+}
+.pt-0 {
+  padding-top: 0 !important;
+}
 /* Utilities */
 .container {
   max-width: var(--container-width);
@@ -306,6 +310,13 @@ img {
   transition: all 0.4s ease;
   color: #fff; /* Default text color (on Hero) */
 }
+
+/* Hidden state when scrolling down */
+.header.header--hidden {
+  transform: translateX(-50%) translateY(-100%);
+  opacity: 0;
+}
+
 .header.scrolled {
   top: 20px;
   border-radius: 60px;
@@ -1289,7 +1300,7 @@ img {
 }
 
 .whatsapp-section {
-  background-image: url("../assets/images/whatsapp-bg.jpg");
+  background-image: url("../assets/images/whatsapp-bg.jpeg");
   background-size: cover;
   background-position: center;
   display: none;
@@ -1298,6 +1309,12 @@ img {
 /* Responsive */
 
 @media screen and (max-width: 991px) {
+  .section {
+    padding: 3rem 0;
+  }
+  .value {
+    padding-top: 0;
+  }
   .nav {
     position: fixed;
     top: 20px;
@@ -1402,6 +1419,12 @@ img {
   }
   .whatsapp-section {
     display: block;
+  }
+  .whatsapp-section h2 {
+    color: #fff;
+  }
+  .whatsapp-section p {
+    color: #d2d4d6;
   }
 }
 @media (max-width: 650px) {
@@ -1558,7 +1581,7 @@ img {
 
 .sticky-wrapper {
   position: sticky;
-  top: 58px;
+  top: 10px;
   display: flex;
   flex-direction: column;
   /* Removed fixed 100vh height to allow natural sticky behavior */
@@ -2122,4 +2145,200 @@ img {
     font-size: 0.95rem;
     padding: 1.25rem;
   }
+}
+/* GSAP STACKING SECTIONS */
+.pinned-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.cards-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.stacking-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  opacity: 0;
+  transform-origin: center top;
+  will-change: transform, opacity;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.card-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.red-theme {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.violet-theme {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.card-text h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.card-visual {
+  margin-left: auto;
+  width: 150px;
+  height: 100px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f1f5f9;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .card-visual {
+    display: block;
+  }
+}
+
+.visual-placeholder {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.red-placeholder {
+  background: repeating-linear-gradient(
+    45deg,
+    #fee2e2,
+    #fee2e2 10px,
+    #fecaca 10px,
+    #fecaca 20px
+  );
+}
+
+.violet-placeholder {
+  background: repeating-linear-gradient(
+    45deg,
+    #ede9fe,
+    #ede9fe 10px,
+    #ddd6fe 10px,
+    #ddd6fe 20px
+  );
+}
+
+@media (max-width: 768px) {
+  .pinned-section {
+    height: auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    display: block;
+  }
+
+  .cards-wrapper {
+    height: auto;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .stacking-card {
+    position: relative;
+    opacity: 1;
+    height: auto;
+    text-align: left;
+    padding: 2rem;
+  }
+
+  .card-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+/* Social Proof Logo Slider */
+.social-proof {
+  padding: var(--space-2xl) 0;
+  overflow: hidden;
+}
+
+.social-proof__label {
+  text-align: center;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-lg);
+  font-weight: 600;
+}
+
+.logos__track {
+  display: flex;
+  gap: 4rem;
+  width: max-content;
+  animation: scroll-logos 20s linear infinite;
+}
+
+.logo-item {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #292a2b;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.logo-item:hover {
+  opacity: 1;
+}
+
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.logos__track:hover {
+  animation-play-state: paused;
 }

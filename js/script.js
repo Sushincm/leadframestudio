@@ -15,14 +15,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // HEADER SCROLL EFFECT
+  // HEADER SCROLL EFFECT WITH HIDE/SHOW
   const header = document.querySelector(".header");
+  let lastScrollTop = 0;
+  let scrollThreshold = 50;
+
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Add scrolled class for styling
+    if (scrollTop > 50) {
       header.classList.add("scrolled");
     } else {
       header.classList.remove("scrolled");
     }
+
+    // Hide/show header based on scroll direction
+    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+      // Scrolling down - hide header
+      header.classList.add("header--hidden");
+    } else {
+      // Scrolling up - show header
+      header.classList.remove("header--hidden");
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   });
 
   // MOBILE MENU TOGGLE
