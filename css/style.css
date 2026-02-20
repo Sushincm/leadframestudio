@@ -104,7 +104,9 @@ img {
   margin: 0 auto;
   padding: 0 var(--space-md);
 }
-
+.value-sub-text {
+  font-size: 0.4rem;
+}
 .text-center {
   text-align: center;
 }
@@ -474,7 +476,7 @@ img {
 }
 
 .hero__description {
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   color: #cbd5e1; /* Slate 300 - Much lighter for dark background */
   max-width: 600px;
   margin: 0 auto var(--space-lg);
@@ -1312,9 +1314,7 @@ img {
   .section {
     padding: 3rem 0;
   }
-  .value {
-    padding-top: 0;
-  }
+
   .nav {
     position: fixed;
     top: 20px;
@@ -1570,7 +1570,6 @@ img {
 
 .levels-left {
   border-right: 1px solid var(--border-light);
-  background-color: var(--bg-color);
   /* height: 100%; Removed to allow sticky to work naturally in grid cell */
 }
 
@@ -1594,7 +1593,7 @@ img {
   align-items: center;
   padding: 2rem 3rem;
   border-bottom: 1px solid var(--border-light);
-  background: var(--bg-color); /* Ensure opaque background when sticking */
+  /* background: var(--bg-color);  */
   z-index: 10;
 }
 
@@ -1616,9 +1615,9 @@ img {
   letter-spacing: 0.05em;
 }
 
-.levels-right {
+/* .levels-right {
   background-color: var(--bg-subtle);
-}
+} */
 
 .level-content {
   padding: 5rem;
@@ -1629,7 +1628,7 @@ img {
 }
 
 .level-headline {
-  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 3vw, 3rem);
   line-height: 1.1;
   font-weight: 600;
   color: var(--text-primary);
