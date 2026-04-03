@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Leadframe Studio | Works Showcase - Explore our portfolio of high-performance, conversion-focused websites."
+    />
+    <title>Our Works | Leadframe Studio</title>
+
+    <!-- Fonts: DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons: Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --bg-dark: #0a0a0a;
+        --card-dark: #121212;
+        --text-muted: #a1a1aa;
+        --border-dark: rgba(255, 255, 255, 0.08);
+      }
+
+      body {
+        background-color: var(--bg-dark);
+        color: #f4f4f5;
+      }
+
+      .works-hero {
+        padding: 12rem 0 6rem;
+        text-align: center;
+        background: radial-gradient(
+          circle at top,
+          rgba(124, 58, 237, 0.1) 0%,
+          transparent 70%
+        );
+      }
+
+      .section__title {
+        color: #fff;
+        font-size: 4rem;
+      }
+
+      .section__subtitle {
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .works-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 3rem;
+        margin-bottom: 5rem;
+      }
+
+      .work-card {
+        background: var(--card-dark);
+        border-radius: 2rem;
+        overflow: hidden;
+        border: 1px solid var(--border-dark);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        position: relative;
+      }
+
+      .work-card:hover {
+        transform: translateY(-12px);
+        background: #18181b;
+        border-color: rgba(124, 58, 237, 0.4);
+        box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5), 
+                    0 0 20px rgba(124, 58, 237, 0.1);
+      }
+
+      .work-card__img-container {
+        width: 100%;
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .work-card__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: grayscale(20%) brightness(0.9);
+      }
+
+      .work-card:hover .work-card__img {
+        transform: scale(1.1);
+        filter: grayscale(0%) brightness(1.1);
+      }
+
+      .work-card__content {
+        padding: 2.5rem;
+      }
+
+      .work-card__category {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+
+      .work-card__title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #fff;
+        line-height: 1.2;
+      }
+
+      .work-card__desc {
+        color: var(--text-muted);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+
+      .work-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 9999px;
+        border: 1px solid var(--border-dark);
+        transition: all 0.3s;
+      }
+
+      .work-card:hover .work-card__link {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+        transform: translateX(5px);
+      }
+
+      .work-card__link i {
+        width: 18px;
+        transition: transform 0.3s;
+      }
+
+      .work-card:hover .work-card__link i {
+        transform: translateX(3px);
+      }
+
+      /* Global Styles Overrides */
+      .header.scrolled {
+        background: rgba(10, 10, 10, 0.8) !important;
+        border-color: var(--border-dark) !important;
+        color: #fff !important;
+      }
+
+      .header.scrolled .nav__link, 
+      .header.scrolled .logo {
+        color: #fff !important;
+      }
+
+      .footer {
+        background: #050505;
+        border-top: 1px solid var(--border-dark);
+      }
+
+      .footer__logo { color: #fff; }
+      .footer__description { color: var(--text-muted); }
+
+      .cta__content {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+        box-shadow: 0 40px 100px -20px rgba(124, 58, 237, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .works-hero {
+          padding: 8rem 0 3rem;
+        }
+        .section__title {
+          font-size: 2.5rem;
+        }
+        .works-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="header scrolled" id="header" style="background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1);">
+      <div class="container">
+        <a href="index.html" class="logo" style="color: #fff;">Leadframe Studio</a>
+        <nav class="nav" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="index.html#services" class="nav__link" style="color: #fff;">Services</a>
+            </li>
+            <li class="nav__item">
+              <a href="index.html#process" class="nav__link" style="color: #fff;">Process</a>
+            </li>
+            <li class="nav__item">
+              <a href="works.html" class="nav__link active" style="color: #fff;">Works</a>
+            </li>
+            <li class="nav__item">
+              <a href="index.html#contact" class="nav__link" style="color: #fff;">Contact</a>
+            </li>
+          </ul>
+          <div class="nav__close" id="nav-close" style="color: #fff;">
+            <i data-lucide="x"></i>
+          </div>
+        </nav>
+        <div class="nav__btns">
+          <a href="index.html#contact" class="btn btn--small header-cta-btn" style="background: var(--accent-color); border: none;">Start a Project</a>
+          <div class="nav__toggle" id="nav-toggle" style="color: #fff;">
+            <i data-lucide="menu"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Hero -->
+      <section class="works-hero">
+        <div class="container">
+          <h1 class="section__title" data-aos="fade-up">Our Showcase</h1>
+          <p class="section__subtitle" data-aos="fade-up" data-aos-delay="100">
+            A curated selection of high-performance digital experiences we've engineered for ambitious brands.
+          </p>
+        </div>
+      </section>
+
+      <!-- Projects Grid -->
+      <section class="works-section section">
+        <div class="container">
+          <div class="works-grid" id="works-grid-container">
+            <!-- Projects dynamically loaded from js/works-data.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta section">
+        <div class="container">
+          <div class="cta__content" style="background: var(--accent-color, #7c3aed); padding: 4rem; border-radius: 2rem; color: white; text-align: center; box-shadow: 0 40px 100px -20px rgba(124, 58, 237, 0.4);">
+            <h2 class="section__title" style="color: white; margin-bottom: 1.5rem;">Ready to be our next success story?</h2>
+            <p style="margin-bottom: 2.5rem; opacity: 0.9;">Let's build a website that doesn't just look good, but works for you.</p>
+            <a href="index.html#contact" class="btn" style="background: #ffffff; color: #4f46e5; border: none; font-weight: 700;">Start Your Transformation</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer (Simplified) -->
+    <footer class="footer section">
+      <div class="container footer__container">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">Leadframe Studio</a>
+          <p class="footer__description">High-performance web design for growth-focused businesses.</p>
+        </div>
+        <div class="footer__contact">
+          <h3 class="footer__title">Say Hello</h3>
+          <a href="mailto:leadframestudio.contact@gmail.com" class="footer__link">leadframestudio.contact@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer__bottom container" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); text-align: center;">
+        <p>&copy; 2026 Leadframe Studio. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/works-data.js"></script>
+    <script>
+      function renderWorks() {
+        const container = document.getElementById('works-grid-container');
+        if (!container || !window.worksData) return;
+
+        container.innerHTML = window.worksData.map(work => `
+          <a href="${work.link}" class="work-card" target="_blank" rel="noopener noreferrer" data-aos="${work.dataAos || 'fade-up'}" data-aos-delay="${work.dataDelay || '0'}">
+            <div class="work-card__img-container">
+              <img src="${work.image}" alt="${work.title}" class="work-card__img">
+            </div>
+            <div class="work-card__content">
+              <span class="work-card__category">${work.category}</span>
+              <h3 class="work-card__title">${work.title}</h3>
+              <p class="work-card__desc">${work.description}</p>
+              <div class="work-card__link">
+                View Case Study <i data-lucide="arrow-right"></i>
+              </div>
+            </div>
+          </a>
+        `).join('');
+
+        // Re-initialize Lucide Icons for dynamic content
+        lucide.createIcons();
+        
+        // Re-initialize AOS
+        AOS.init({ duration: 800, once: true });
+      }
+
+      // Initial Render
+      document.addEventListener('DOMContentLoaded', renderWorks);
+    </script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

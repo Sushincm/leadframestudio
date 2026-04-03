@@ -40,6 +40,10 @@
           <i data-lucide="file-text"></i>
           CMS Content
         </a>
+        <a href="#" class="nav__item" onclick="switchView('works')">
+          <i data-lucide="briefcase"></i>
+          Work Showcase
+        </a>
       </nav>
     </aside>
 
@@ -135,6 +139,35 @@
         <div id="cms-container" class="cms-grid">
           <div style="text-align: center; padding: 2rem; color: #6b7280">
             Loading CMS content...
+          </div>
+        </div>
+      </div>
+
+      <!-- WORKS VIEW -->
+      <div id="works-view" style="display: none">
+        <header class="header">
+          <div class="header__left">
+            <div class="mobile-toggle" onclick="toggleSidebar()">
+                <i data-lucide="menu"></i>
+            </div>
+            <div>
+                <h1 class="page-title">Work Showcase</h1>
+                <p style="color: #6b7280; font-size: 0.875rem">
+                  Manage your portfolio projects
+                </p>
+            </div>
+          </div>
+          <div class="header__right">
+            <button class="btn-login" style="padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.5rem;" onclick="openAddWorkModal()">
+              <i data-lucide="plus" style="width: 16px;"></i> Add Project
+            </button>
+          </div>
+        </header>
+
+        <div id="works-grid" class="leads-card-grid">
+          <!-- Works will be populated by JS -->
+          <div style="text-align: center; padding: 2rem; width: 100%; grid-column: 1 / -1; color: #6b7280">
+            Loading works...
           </div>
         </div>
       </div>

@@ -49,9 +49,6 @@
 
     <!-- Three.js (for Hero Animation) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -66,7 +63,9 @@
             <li class="nav__item">
               <a href="#process" class="nav__link">Process</a>
             </li>
-
+            <li class="nav__item">
+              <a href="works.html" class="nav__link">Works</a>
+            </li>
             <li class="nav__item">
               <a href="#testimonials" class="nav__link">Testimonials</a>
             </li>
@@ -450,7 +449,30 @@
           </div>
         </div> -->
 
-        <div class="whatsapp-section">
+      <!-- Works Showcase Section -->
+      <section class="showcase section" id="showcase">
+        <div class="container">
+          <div class="section__header text-center">
+            <h2 class="section__title">Our Latest Work</h2>
+            <p class="section__subtitle">
+              High-performance digital experiences we've engineered for ambitious brands.
+            </p>
+          </div>
+          
+          <div class="showcase__grid" id="homepage-showcase-grid">
+            <!-- Latest works will be injected here from js/works-data.js -->
+          </div>
+
+          <div class="text-center" style="margin-top: 4rem;">
+            <a href="works.html" class="btn btn--secondary">
+              View All Projects
+              <i data-lucide="arrow-right" class="btn__icon"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="whatsapp-section">
           <div class="container">
             <div class="section__header text-center mb-5">
               <h2 class="section__title">Unfiltered Feedback</h2>
@@ -1188,15 +1210,20 @@
               style="position: relative; overflow: hidden"
             >
               <div style="position: relative; z-index: 2">
+                <!-- Hidden iframe to handle Google Form submission without redirect -->
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted){ handleFormSuccess(); }"></iframe>
+                
                 <form
                   class="contact__form"
                   id="contact-form"
                   style="background: transparent"
+                  action="https://docs.google.com/forms/d/13t1Awu30bNy1vu2Dfqvs4631vz62gpFmQnQry6YVMEA/formResponse"
+                  method="POST"
+                  target="hidden_iframe"
+                  onsubmit="window.submitted=true;"
                 >
                   <h3
                     class="form__title"
-                    data-section="Contact"
-                    data-field="form_title"
                   >
                     Send an Enquiry
                   </h3>
@@ -1204,6 +1231,7 @@
                     <label for="name" class="form__label">Name</label>
                     <input
                       type="text"
+                      name="entry.912570657"
                       id="name"
                       class="form__input"
                       placeholder="John Doe"
@@ -1214,6 +1242,7 @@
                     <label for="email" class="form__label">Email</label>
                     <input
                       type="email"
+                      name="entry.87031857"
                       id="email"
                       class="form__input"
                       placeholder="john@company.com"
@@ -1225,6 +1254,7 @@
                       >Project Details</label
                     >
                     <textarea
+                      name="entry.1090617662"
                       id="project_details"
                       class="form__input"
                       rows="4"
@@ -1296,8 +1326,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="js/card-scanner.js"></script>
+    <script src="js/works-data.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/cms.js"></script>
     <script src="js/bg-animation.js"></script>
   </body>
 </html>

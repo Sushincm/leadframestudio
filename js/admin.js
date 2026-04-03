@@ -8,6 +8,7 @@ const supabaseAdmin = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 // State
 let leads = [];
 let filteredLeads = [];
+let works = [];
 
 // DOM Elements
 const leadsGrid = document.getElementById("leads-grid");
@@ -123,6 +124,8 @@ window.switchView = (viewName) => {
   // Hide all views first
   document.getElementById("leads-view").style.display = "none";
   document.getElementById("cms-view").style.display = "none";
+  const worksView = document.getElementById("works-view");
+  if (worksView) worksView.style.display = "none";
 
   if (viewName === "leads") {
     document.querySelector(".nav__item:nth-child(1)").classList.add("active");
@@ -131,8 +134,198 @@ window.switchView = (viewName) => {
     document.querySelector(".nav__item:nth-child(2)").classList.add("active");
     document.getElementById("cms-view").style.display = "block";
     fetchCMSContent(); // Fetch when switching
+  } else if (viewName === "works") {
+    document.querySelector(".nav__item:nth-child(3)").classList.add("active");
+    if (worksView) worksView.style.display = "block";
+    fetchWorks(); // Fetch when switching
   }
 };
+
+// ==========================================
+// WORKS FUNCTIONALITY
+// ==========================================
+
+window.fetchWorks = async () => {
+    const grid = document.getElementById("works-grid");
+    if (!grid) return;
+
+    try {
+        const { data, error } = await supabaseAdmin
+            .from('works')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) {
+            if (error.code === 'PGRST116' || error.message.includes('not found')) {
+                // Table doesn't exist yet, show a helpful message
+                grid.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; width: 100%; grid-column: 1 / -1;">
+                        <div style="background: #fee2e2; border: 1px solid #fecaca; padding: 2rem; border-radius: 1rem; color: #b91c1c;">
+                            <i data-lucide="alert-triangle" style="width: 48px; height: 48px; margin-bottom: 1rem;"></i>
+                            <h3 style="margin-bottom: 0.5rem;">"works" table not found in Supabase</h3>
+                            <p style="font-size: 0.875rem;">Please create a 'works' table with: id, created_at, title, category, description, image_url, live_url.</p>
+                        </div>
+                    </div>
+                `;
+                if (window.lucide) lucide.createIcons();
+                return;
+            }
+            throw error;
+        }
+
+        works = data || [];
+        renderWorks();
+    } catch (err) {
+        console.error("Error fetching works:", err);
+        grid.innerHTML = `<div style="text-align: center; padding: 2rem; color: red;">Error: ${err.message}</div>`;
+    }
+}
+
+function renderWorks() {
+    const grid = document.getElementById("works-grid");
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    if (works.length === 0) {
+        grid.innerHTML = `<div style="text-align: center; padding: 2rem; width: 100%; grid-column: 1 / -1; color: #6b7280;">No projects added yet.</div>`;
+        return;
+    }
+
+    works.forEach(work => {
+        const card = document.createElement("div");
+        card.className = "lead-card"; // Reusing lead-card style for consistency
+        
+        card.innerHTML = `
+            <div style="width:100%; height:160px; background:#f3f4f6; border-radius:0.5rem; margin-bottom:1rem; overflow:hidden;">
+                <img src="${work.image_url || 'https://via.placeholder.com/400x300?text=No+Image'}" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="lead-card__header">
+                <div>
+                  <div class="lead-card__name">${work.title}</div>
+                  <div class="lead-card__service">${work.category}</div>
+                </div>
+            </div>
+            <div class="lead-card__project-preview" style="height:3em; -webkit-line-clamp: 2;">
+                ${work.description || "No description provided."}
+            </div>
+            <div class="lead-card__footer">
+                <a href="${work.live_url || '#'}" target="_blank" style="color:var(--primary-color); font-size:0.75rem; font-weight:600; text-decoration:none;">View Site</a>
+                <div class="actions">
+                    <button class="btn-icon delete" onclick="deleteWork('${work.id}')">
+                        <i data-lucide="trash-2"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+
+    if (window.lucide) lucide.createIcons();
+}
+
+window.openAddWorkModal = () => {
+    Swal.fire({
+        title: 'Add New Project',
+        html: `
+            <div style="text-align: left; padding: 1rem;">
+                <div class="form-group">
+                    <label>Project Title</label>
+                    <input type="text" id="swal-title" class="form-control" placeholder="e.g. Modern Clinic Site">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" id="swal-category" class="form-control" placeholder="e.g. Web Design">
+                </div>
+                <div class="form-group">
+                    <label>Showcase Image URL</label>
+                    <input type="text" id="swal-image" class="form-control" placeholder="URL to project thumbnail">
+                </div>
+                <div class="form-group">
+                    <label>Live URL</label>
+                    <input type="text" id="swal-link" class="form-control" placeholder="https://example.com">
+                </div>
+                <div class="form-group">
+                    <label>Short Description</label>
+                    <textarea id="swal-desc" class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+        `,
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: 'Save Project',
+        confirmButtonColor: '#6366f1',
+        preConfirm: () => {
+            return {
+                title: document.getElementById('swal-title').value,
+                category: document.getElementById('swal-category').value,
+                image_url: document.getElementById('swal-image').value,
+                live_url: document.getElementById('swal-link').value,
+                description: document.getElementById('swal-desc').value
+            }
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            saveWork(result.value);
+        }
+    });
+}
+
+async function saveWork(workData) {
+    if (!workData.title) {
+        Swal.fire('Error', 'Project title is required', 'error');
+        return;
+    }
+
+    try {
+        const { error } = await supabaseAdmin
+            .from('works')
+            .insert([workData]);
+
+        if (error) throw error;
+
+        Swal.fire({
+            title: 'Success!',
+            text: 'Project added to showcase',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false
+        });
+
+        fetchWorks();
+    } catch (err) {
+        console.error("Error saving work:", err);
+        Swal.fire('Error', 'Failed to save project. Make sure the "works" table exists in your Supabase database.', 'error');
+    }
+}
+
+window.deleteWork = async (id) => {
+    const result = await Swal.fire({
+        title: 'Delete Project?',
+        text: "This will remove it from the showcase forever.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ef4444',
+        confirmButtonText: 'Yes, delete it!'
+    });
+
+    if (!result.isConfirmed) return;
+
+    try {
+        const { error } = await supabaseAdmin
+            .from('works')
+            .delete()
+            .eq('id', id);
+
+        if (error) throw error;
+
+        fetchWorks();
+        Swal.fire('Deleted!', 'Project removed successfully.', 'success');
+    } catch (err) {
+        console.error("Error deleting work:", err);
+        Swal.fire('Error', 'Failed to delete project', 'error');
+    }
+}
 
 // ==========================================
 // LEADS FUNCTIONALITY

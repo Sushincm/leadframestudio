@@ -99,87 +99,72 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 
-  // FORM HANDLING
+  // FORM HANDLING (Google Forms)
   const contactForm = document.getElementById("contact-form");
 
-  // Supabase Configuration
-  const SUPABASE_URL = "https://muviicdrytagcbdgqbvn.supabase.co";
-  const SUPABASE_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11dmlpY2RyeXRhZ2NiZGdxYnZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2MTI0MjcsImV4cCI6MjA4NjE4ODQyN30.cJ86VJ40vICeIVKPG5-smOhI41F9NmH49kick3RYZ7c";
+  window.handleFormSuccess = () => {
+    const btn = contactForm.querySelector(".btn");
+    btn.innerHTML = "Message Sent!";
+    btn.style.backgroundColor = "#10b981";
+    btn.style.opacity = "1";
+    contactForm.reset();
 
-  if (contactForm && window.supabase) {
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY,
-    );
+    setTimeout(() => {
+      btn.innerHTML = "Send Message";
+      btn.style.backgroundColor = "";
+      btn.disabled = false;
+      window.submitted = false; // Reset for next submission
+    }, 3000);
+  };
 
-    contactForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
       const btn = contactForm.querySelector(".btn");
-      const originalText = btn.innerHTML;
-
-      // Get form data
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-
-      // Get Project Details (renamed from message)
-      const projectDetailsEl = document.getElementById("project_details");
-      const projectDetails = projectDetailsEl ? projectDetailsEl.value : "";
-
-      // Use project details for both fields to ensure data compatibility
-      const message = projectDetails;
-
-      // Loading state
       btn.innerHTML = "Sending...";
       btn.style.opacity = "0.8";
       btn.disabled = true;
-
-      try {
-        const { error } = await supabaseClient.from("form_submissions").insert([
-          {
-            name,
-            email,
-            message: message, // Standard field
-            project_details: projectDetails, // New specific field
-            source_page: "landing_page",
-            service_interest: "General Inquiry",
-          },
-        ]);
-
-        if (error) throw error;
-
-        // Success state
-        btn.innerHTML = "Message Sent!";
-        btn.style.backgroundColor = "var(--success-color)"; // Ensure this var exists or use specific color
-        if (
-          !getComputedStyle(document.documentElement).getPropertyValue(
-            "--success-color",
-          )
-        ) {
-          btn.style.backgroundColor = "#10b981";
-        }
-        btn.style.opacity = "1";
-
-        contactForm.reset();
-
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.backgroundColor = "";
-          btn.disabled = false;
-        }, 3000);
-      } catch (err) {
-        console.error("Submission error:", err);
-        btn.innerHTML = "Error. Try again.";
-        btn.style.backgroundColor = "#ef4444";
-
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.backgroundColor = "";
-          btn.disabled = false;
-        }, 3000);
-      }
+      // The actual submission is handled by the form's target="hidden_iframe"
     });
   }
+
+  // HOMEPAGE SHOWCASE RENDERING
+  function renderHomepageShowcase() {
+    const container = document.getElementById("homepage-showcase-grid");
+    if (!container || !window.worksData) return;
+
+    // Latest works first - Reverse and take first 3
+    const latestWorks = [...window.worksData].reverse().slice(0, 3);
+
+    container.innerHTML = latestWorks
+      .map(
+        (work, index) => `
+      <div class="showcase__item" data-aos="fade-up" data-aos-delay="${index * 100}">
+        <div class="showcase__card work__card">
+          <div class="work__img-wrapper">
+             <img src="${work.image}" alt="${work.title}" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="work__content">
+            <span class="work__category">${work.category}</span>
+            <h3 class="work__title">${work.title}</h3>
+            <p class="work__description">${work.description}</p>
+            <a href="${work.link}" class="btn btn--small btn--secondary" target="_blank" rel="noopener noreferrer">
+               View Live Site
+            </a>
+          </div>
+        </div>
+      </div>
+    `,
+      )
+      .join("");
+
+    // Re-trigger Lucide for new icons if any
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // Initialize Showcase on Load
+  document.addEventListener("DOMContentLoaded", () => {
+    renderHomepageShowcase();
+  });
 
   // Initialize AOS
   AOS.init({
