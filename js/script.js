@@ -139,19 +139,20 @@ document.addEventListener("DOMContentLoaded", () => {
       .map(
         (work, index) => `
       <div class="showcase__item" data-aos="fade-up" data-aos-delay="${index * 100}">
-        <div class="showcase__card work__card">
+        <a href="${work.link}" class="work__card" target="_blank" rel="noopener noreferrer">
           <div class="work__img-wrapper">
-             <img src="${work.image}" alt="${work.title}" style="width: 100%; height: 100%; object-fit: cover;">
+             <img src="${work.image}" alt="${work.title}">
           </div>
           <div class="work__content">
             <span class="work__category">${work.category}</span>
             <h3 class="work__title">${work.title}</h3>
             <p class="work__description">${work.description}</p>
-            <a href="${work.link}" class="btn btn--small btn--secondary" target="_blank" rel="noopener noreferrer">
+            <div class="btn btn--small btn--secondary">
                View Live Site
-            </a>
+               <i data-lucide="external-link" class="btn__icon" style="width: 14px; height: 14px;"></i>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     `,
       )
@@ -161,10 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.lucide) lucide.createIcons();
   }
 
-  // Initialize Showcase on Load
-  document.addEventListener("DOMContentLoaded", () => {
-    renderHomepageShowcase();
-  });
+  // Initialize Showcase on Load (Disabled for hardcoded home page cards)
+  // renderHomepageShowcase();
 
   // Initialize AOS
   AOS.init({

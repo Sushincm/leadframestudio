@@ -292,8 +292,11 @@
         const container = document.getElementById('works-grid-container');
         if (!container || !window.worksData) return;
 
-        container.innerHTML = window.worksData.map(work => `
-          <a href="${work.link}" class="work-card" target="_blank" rel="noopener noreferrer" data-aos="${work.dataAos || 'fade-up'}" data-aos-delay="${work.dataDelay || '0'}">
+        // Latest works first
+        const sortedWorks = [...window.worksData].reverse();
+
+        container.innerHTML = sortedWorks.map((work, index) => `
+          <a href="${work.link}" class="work-card" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="${(index % 3) * 100}">
             <div class="work-card__img-container">
               <img src="${work.image}" alt="${work.title}" class="work-card__img">
             </div>
@@ -302,21 +305,25 @@
               <h3 class="work-card__title">${work.title}</h3>
               <p class="work-card__desc">${work.description}</p>
               <div class="work-card__link">
-                View Case Study <i data-lucide="arrow-right"></i>
+                View Live Site <i data-lucide="external-link"></i>
               </div>
             </div>
           </a>
         `).join('');
 
         // Re-initialize Lucide Icons for dynamic content
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
         
         // Re-initialize AOS
-        AOS.init({ duration: 800, once: true });
+        if (window.AOS) AOS.init({ duration: 800, once: true });
       }
 
       // Initial Render
-      document.addEventListener('DOMContentLoaded', renderWorks);
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', renderWorks);
+      } else {
+        renderWorks();
+      }
     </script>
     <script src="js/script.js"></script>
   </body>

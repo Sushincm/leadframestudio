@@ -685,32 +685,44 @@ img {
 }
 
 /* NEW WORK GRID STYLES */
+.showcase__grid,
 .work__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
   margin-top: 4rem;
 }
 .work__card {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  background: #111827; /* Dark Slate 900 */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition);
+  text-decoration: none;
+}
+.work__card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-light);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 .work__img-wrapper {
   width: 100%;
-  height: 300px;
+  height: 240px;
   position: relative;
   overflow: hidden;
   background: #0f172a;
 }
-/* Simulated thumbnails */
-.work__card:nth-child(1) .work__img-wrapper {
-  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+.work__img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
 }
-.work__card:nth-child(2) .work__img-wrapper {
-  background: linear-gradient(135deg, #831843 0%, #be185d 100%);
-}
-.work__card:nth-child(3) .work__img-wrapper {
-  background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+.work__card:hover .work__img-wrapper img {
+  transform: scale(1.1);
 }
 .work__overlay {
   position: absolute;
@@ -727,7 +739,7 @@ img {
   opacity: 1;
 }
 .work__content {
-  padding: 2rem;
+  padding: 2.5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -736,20 +748,21 @@ img {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--accent-color);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  color: var(--accent-light);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
 }
 .work__title {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: var(--text-primary);
+  margin-bottom: 1rem;
+  color: #ffffff;
 }
 .work__description {
-  color: var(--text-muted);
+  color: #94a3b8; /* Slate 400 - high contrast on dark */
   font-size: 1rem;
-  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
 }
 
 /* Google Reviews Carousel */
@@ -1302,7 +1315,7 @@ img {
 }
 
 .whatsapp-section {
-  background-image: url("../assets/images/whatsapp-bg.jpeg");
+  background-image: url("../assets/images/whatsapp-bg.webp");
   background-size: cover;
   background-position: center;
   display: none;
